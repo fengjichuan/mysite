@@ -1,0 +1,239 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>jQTouch &beta;</title>
+        <!--
+        <link rel="stylesheet" href="../../themes/css/jqtouch.css" title="jQTouch">
+		-->
+		
+        <script src="../../src/lib/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../src/jqtouch.js" type="text/javascript" charset="utf-8"></script>
+        <!-- Uncomment the following two lines (and comment out the previous two) to use jQuery instead of Zepto. -->
+        <!-- <script src="../../src/lib/jquery-1.7.min.js" type="application/x-javascript" charset="utf-8"></script> -->
+        <!-- <script src="../../src/jqtouch-jquery.min.js" type="application/x-javascript" charset="utf-8"></script> -->
+		<!--
+        <script src="../../extensions/jqt.themeswitcher.min.js" type="application/x-javascript" charset="utf-8"></script>
+		-->
+		
+		<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 6, ../scss/include/_base.scss */
+body {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-touch-callout: none;
+}
+
+/* line 11, ../scss/include/_base.scss */
+#sunny {
+  -webkit-text-size-adjust: none;
+  -webkit-user-select: none;
+  user-select: none;
+  font-family: "Helvetica Neue", Helvetica;
+  position: absolute;
+  right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+#sunny > * {
+  display: block;
+  left: 0;
+  top: 0;
+  min-height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  position: absolute;
+  z-index: 0;
+  display: -webkit-box;
+  display: box;
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-box-flex: 1;
+  box-flex: 1;
+}
+
+
+/*** just for test ***/
+#sunny .page {
+  	-webkit-animation-iteration-count: 1;
+  	-webkit-animation-direction: alternate;
+ 	-webkit-animation-delay: 0;
+ 	-webkit-animation-duration: 250ms;
+  	-webkit-animation-fill-mode: both;
+  	-webkit-animation-timing-function: ease-in-out;
+}
+
+#sunny .current{
+	left: 0;
+	top: 0;
+	z-index: 9;
+}
+
+/* 页面左滑动的动画 */
+#sunny .slideleft-in {
+  -webkit-animation-name: sunnySlideLeftIn;
+}
+#sunny .slideleft-out {
+  -webkit-animation-name: sunnySlideLeftOut;
+}
+@-webkit-keyframes sunnySlideLeftIn {
+  0% {
+    -webkit-transform: translateX(100%);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+  }
+}
+@-webkit-keyframes sunnySlideLeftOut {
+  0% {
+    -webkit-transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+  }
+}
+
+/* 页面右滑动的动画 */
+#sunny .slideright-in {
+  -webkit-animation-name: sunnySlideRightIn;
+}
+#sunny .slideright-out {
+  -webkit-animation-name: sunnySlideRightOut;
+}
+@-webkit-keyframes sunnySlideRightIn {
+  0% {
+    -webkit-transform: translateX(-100%);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+  }
+}
+@-webkit-keyframes sunnySlideRightOut {
+  0% {
+    -webkit-transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(100%);
+  }
+}
+
+#sunny .page1 {
+	background-color: red;
+}
+#sunny .page2 {
+	background-color: blue;
+	z-index: 99999;
+}
+
+#sunny button{
+	font-size: 36px;
+}
+
+		</style>
+    </head>
+    <body>
+    	
+    	<!--
+        <div id="jqt" class="supports3d portrait">
+        	
+            <div id="animations" class="current">
+                <div class="toolbar">
+                    <h1>Animations</h1>
+                    <a class="back" href="#">Home</a>
+                </div>
+                <div class="scroll">
+                    <h2>Most Popular</h2>
+                    <ul class="rounded">
+                        <li><a href="#animdemo">Slide</a></li>
+                        <li><a href="#animdemo" class="slideup">Slide Up</a></li>
+                        <li><a href="#animdemo" class="dissolve">Dissolve</a></li>
+                        <li><a href="#animdemo" class="pop">Pop</a></li>
+                    </ul>
+                    <h2>3d Transitions</h2>
+                    <ul class="rounded">
+                        <li><a href="#animdemo" class="flipright">Flip right</a></li>
+                        <li><a href="#animdemo" class="flipleft">Flip left</a></li>
+                        <li><a href="#animdemo" class="cube">Cube</a></li>
+                        <li><a href="#animdemo" class="swap">Swap</a></li>
+                    </ul>
+                </div>
+                <div class="info">
+                    Custom animations are also <a target="_blank" href="http://code.google.com/p/jqtouch/wiki/Animations">easy to write</a>. <br>View the source in <code>demos/customanimation</code> to see how.
+                </div>
+            </div>
+            
+            <div id="animdemo">
+                <div style="font-size: 1.5em; text-align: center; margin: 160px 0 90px; font-family: Marker felt;">
+                    Pretty smooth, eh?            
+                </div>
+                <a style="margin-bottom: 120px;color:rgba(0,0,0,.9)" href="#" class="whiteButton goback">Go back</a>
+            </div>
+            
+            
+        </div>
+       -->
+       
+       
+       <div id="sunny">
+       		<div id="page1" class="page page1 current">
+       			<a href="#page2"> slide left </a>
+       			<div style="overflow-y:auto;">
+       			<br /><br /><br /><br /><br />
+       			fjd sf dsfs llll <br /><br /><br /><br /><br />
+       			fjd sf dsfs llll <br /><br /><br /><br /><br />
+       			fjd sf dsfs llll <br /><br /><br /><br /><br />
+       			fjd sf dsfs llll <br /><br /><br /><br /><br />
+       			fjd sf dsfs llll <br /><br /><br /><br /><br />
+       			fjd sf dsfs llll <br /><br /><br /><br /><br />
+       			fjd sf dsfs llll <br /><br /><br /><br /><br />
+       			fjd sf dsfs llll <br /><br /><br /><br /><br />
+       			fjd sf dsfs llll <br /><br /><br /><br /><br />
+       			fjd sf dsfs llll <br /><br /><br /><br /><br />
+       			fjd sf dsfs llll <br /><br /><br /><br /><br />
+       			</div>
+       		</div>
+       		<div id="page2" class="page page2"></div>
+       </div>
+    </body>
+    <script type="text/javascript" charset="utf-8">
+           // $('#jqt').addClass('animating');$('#animations').addClass('slideleft in current');$('#animdemo').addClass('slideleft out');
+            $(document.body).ready(function() {
+            	// 放在内存中的DOM对象
+            	var _dom = $('.page2').remove();
+            	// return;
+            	$(document.body).unbind().bind('webkitAnimationEnd', function(e) {
+            		// $('#jqt').removeClass('animating');
+            		// $('#animations').removeClass('slideleft').removeClass('out').removeClass('current');
+            		$('.page2').removeClass('slideleft-in').addClass('current');
+            		_dom = $('.page1').remove().removeClass('slideleft-out').removeClass('current');
+            	}).bind('webkitAnimationStart', function(e) {
+            		
+            	});
+            	var el = $('#sunny a');
+            	$(el).bind('click', function(e) {
+            		e.stopPropagation();
+					e.preventDefault();
+            		//$('#jqt').addClass('animating');
+            		_dom.appendTo($('#sunny')).addClass('slideleft-in');
+            		// $('.page1').addClass('slideleft-out');
+            	});
+            	
+            });
+            
+            
+    	(function($) {
+    		var sunny = {
+    			init: function() {
+    				
+    			}
+    		}
+    		
+    	})(Zepto);
+    </script>
+</html>

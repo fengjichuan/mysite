@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+	</head>
+	<body>
+		<div id="testid"></div>
+	</body>
+	<script>
+	
+	(function() {
+		// 随机生成10000个不重复的数字
+		var  n = 1000000;
+		// var oldArr = [5,1,6,3,7,8,10];//缺失的源数组997个数；
+		var oldArr = [];
+		
+		function randomM() {
+			var m = [];
+			(function() {
+				if(m.length > 2) return;
+				var s = parseInt(Math.random()*n) + 1;
+				if(m.indexOf(s) == -1) {
+					m.push(s);
+				}
+				arguments.callee();
+			})();
+			console.log(m);
+			for(var i=0;i<n;i++) {
+				if(m.indexOf(i+1) == -1) {
+					oldArr.push(i+1);
+				}
+			}
+		}
+		randomM();
+		// console.log(oldArr);
+		
+		function sort() {
+			var st = +new Date();
+			var newArr = Array(n+1);
+			var lostArr = [];//要找的数的数组
+			for(var i = 0; i < n-3; i++) {
+    			newArr[oldArr[i]] = 1;
+			}
+			for(var j = 0; j < newArr.length; j++) {
+    			if(!newArr[j]) {
+        			lostArr.push(j);
+    			}
+			}
+			lostArr.shift(0);
+			var et = +new Date();
+			console.log('lostArr:', lostArr);
+			console.log(et - st);
+		}
+		
+		function sort1() {
+			var st = +new Date();
+			var newArr = Array(n+1);
+			var lostArr = [];//要找的数的数组
+			
+			var index = 0;
+			(function() {
+				if(index > (n+1)) return;
+				newArr[oldArr[index]] = 1;
+				index++;
+				// arguments.callee.call();
+			})();
+			
+			for(var j = 0; j < newArr.length; j++) {
+    			if(!newArr[j]) {
+        			lostArr.push(j);
+    			}
+			}
+			
+			/*
+			for(var i = 0; i < n-3; i++) {
+    			newArr[oldArr[i]] = 1;
+			}
+			for(var j = 0; j < newArr.length; j++) {
+    			if(!newArr[j]) {
+        			lostArr.push(j);
+    			}
+			}
+			*/
+			
+			lostArr.shift(0);
+			var et = +new Date();
+			console.log('lostArr:', lostArr);
+			console.log(et - st);
+		}
+		
+		sort1();
+		
+	})();
+	
+	
+	</script>
+</html>

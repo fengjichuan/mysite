@@ -1,0 +1,248 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 6, ../scss/include/_base.scss */
+body {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-touch-callout: none;
+  -webkit-text-size-adjust: none;
+  -webkit-box-sizing: border-box;
+}
+
+/* line 11, ../scss/include/_base.scss */
+#sunny {
+  -webkit-text-size-adjust: none;
+  -webkit-user-select: none;
+  user-select: none;
+  font-family: "Helvetica Neue", Helvetica;
+  position: absolute;
+  right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+/*
+#sunny > * {
+  display: block;
+  left: 0;
+  top: 0;
+  min-height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  position: absolute;
+  z-index: 0;
+  display: -webkit-box;
+  display: box;
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-box-flex: 1;
+  box-flex: 1;
+}
+*/
+#sunny a, #sunny a:active, #sunny a:link, #sunny a:hover{
+	color: white;
+	text-decoration: none;
+	font-size: 14px;
+}
+
+
+/*** just for test ***/
+#sunny .page {
+	
+	display: block;
+  left: 0;
+  top: 0;
+  min-height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  position: absolute;
+  z-index: 0;
+  display: -webkit-box;
+  display: box;
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-box-flex: 1;
+  box-flex: 1;
+  	
+  	-webkit-animation-iteration-count: 1;
+  	-webkit-animation-direction: alternate;
+ 	-webkit-animation-delay: 0.1;
+ 	-webkit-animation-duration: 400ms;
+  	-webkit-animation-fill-mode: both;
+  	
+  	-webkit-animation-timing-function: ease-in-out;
+  	/*
+  	-webkit-animation-timing-function: linear;
+	*/
+}
+
+#sunny .current{
+	z-index: 9;
+}
+
+/* 页面左滑动的动画 */
+#sunny .slideleft-in {
+  -webkit-animation-name: sunnySlideLeftIn;
+}
+#sunny .slideleft-out {
+  -webkit-animation-name: sunnySlideLeftOut;
+}
+@-webkit-keyframes sunnySlideLeftIn {
+  0% {
+    -webkit-transform: translateX(100%);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+  }
+}
+@-webkit-keyframes sunnySlideLeftOut {
+  0% {
+    -webkit-transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+  }
+}
+
+/* 页面右滑动的动画 */
+#sunny .slideright-in {
+  -webkit-animation-name: sunnySlideRightIn;
+}
+#sunny .slideright-out {
+  -webkit-animation-name: sunnySlideRightOut;
+}
+@-webkit-keyframes sunnySlideRightIn {
+  0% {
+    -webkit-transform: translateX(-100%);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+  }
+}
+@-webkit-keyframes sunnySlideRightOut {
+  0% {
+    -webkit-transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(100%);
+  }
+}
+
+/* 页面向上滑动 */
+#sunny .slideup-in {
+  -webkit-animation-name: sunnySlideUpIn;
+}
+#sunny .slideup-out {
+  -webkit-animation-name: sunnySlideUpOut;
+}
+@-webkit-keyframes sunnySlideUpIn {
+  0% {
+    -webkit-transform: translateY(100%);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+  }
+}
+@-webkit-keyframes sunnySlideUpOut {
+  0% {
+    -webkit-transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-100%);
+  }
+}
+
+/* 页面向下滑动 */
+#sunny .slidedown-in {
+  -webkit-animation-name: sunnySlideDownIn;
+}
+#sunny .slidedown-out {
+  -webkit-animation-name: sunnySlideDownOut;
+}
+@-webkit-keyframes sunnySlideDownIn {
+  0% {
+    -webkit-transform: translateY(-100%);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+  }
+}
+@-webkit-keyframes sunnySlideDownOut {
+  0% {
+    -webkit-transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(100%);
+  }
+}
+
+/* 页面淡入 */
+#sunny .fadein-in {
+  -webkit-animation-name: sunnyFadeInIn;
+}
+#sunny .fadein-out {
+  -webkit-animation-name: sunnyFadeInOut;
+}
+@-webkit-keyframes sunnyFadeInIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes sunnyFadeInOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* 页面淡出 */
+#sunny .fadeout-in {
+  -webkit-animation-name: sunnyFadeOutIn;
+}
+#sunny .fadeout-out {
+  -webkit-animation-name: sunnyFadeOutOut;
+}
+@-webkit-keyframes sunnyFadeOutIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes sunnyFadeOutOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+#sunny .page1 {
+	background-color: #666;
+}
+#sunny .page2 {
+	background-color: #888;
+}
+#sunny .page3 {
+	background-color: #aaa;
+}
+#sunny .page4 {
+	background-color: #ccc;
+}
+
+#sunny button{
+	font-size: 36px;
+}
+
+
+
