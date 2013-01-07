@@ -192,56 +192,9 @@
                 cls: 'launchscreen',
                 items: [
                     {
-                        text: 'Buttons',
-                        leaf: true,
-                        id: 'buttons'
-                    },
-                    {
-                        text: 'Forms',
-                        leaf: true,
-                        id: 'forms'
-                    },
-                    {
-                        text: 'List',
-                        leaf: true,
-                        id: 'list'
-                    },
-                    {
-                        text: 'Nested List',
-                        view: 'NestedList',
-                        leaf: true,
-                        id: 'nestedlist'
-                    },
-                    {
-                        text: 'Icons',
-                        leaf: true,
-                        id: 'icons'
-                    },
-                    {
-                        text: 'Toolbars',
-                        leaf: true,
-                        id: 'toolbars'
-                    },
-                    {
                         text: 'Carousel',
                         leaf: true,
                         id: 'carousel'
-                    },
-                    {
-                        text: 'Tabs',
-                        leaf: true,
-                        id: 'tabs'
-                    },
-                    {
-                        text: 'Bottom Tabs',
-                        view: 'BottomTabs',
-                        leaf: true,
-                        id: 'bottom-tabs'
-                    },
-                    {
-                        text: 'Overlays',
-                        leaf: true,
-                        id: 'overlays'
                     }
                 ]
             }
@@ -251,54 +204,10 @@
     //Ext.Array.each(animations, function(anim) {
     //    root.items.push(anim);
     //});
-
-    root.items.push(animations, {
-        text: 'Touch Events',
-        id: 'touchevents',
-        view: 'TouchEvents',
-        leaf: true
-    }, {
-        text: 'Data',
-        id: 'data',
-        items: [
-            {
-                text: 'Nested Loading',
-                view: 'NestedLoading',
-                leaf: true,
-                id: 'nestedloading'
-            },
-            {
-                text: 'JSONP',
-                leaf: true,
-                id: 'jsonp'
-            },
-            {
-                text: 'YQL',
-                leaf: true,
-                id: 'yql'
-            },
-            {
-                text: 'Ajax',
-                leaf: true,
-                id: 'ajax'
-            }
-        ]
-    }, {
-        text: 'Media',
-        id: 'media',
-        items: [
-            {
-                text: 'Video',
-                leaf: true,
-                id: 'video'
-            },
-            {
-                text: 'Audio',
-                leaf: true,
-                id: 'audio'
-            }
-        ]
-    });
+	
+	
+    root.items.push(animations);
+    
 
     Ext.define('Kitchensink.store.Demos', {
         alias: 'store.Demos',

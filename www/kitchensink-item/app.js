@@ -46,11 +46,12 @@ Ext.application({
         'Pop', 'Fade', 'Flip','Cube'
     ],
     */
-   	views: ['Carousel'],
+   	// views: ['Carousel', 'SlideLeft'],
 
     //loads app/store/Demos.js, which contains the tree data for our main navigation NestedList
-    stores: ['Demos'],
-
+    // stores: ['Demos'],
+	stores: ['../view/Carousel'],
+	
     //the Kitchen Sink has Phone and Tablet modes, which rearrange the screen based on the type
     //of device detected
     profiles: ['Tablet', 'Phone']

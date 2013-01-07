@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>A Photo Book Content Flip Demo</title>
+		<meta name="description" content="A Photo Book Content Flip Demo" />
+		<meta name="keywords" content="jquery, plugin, css3, flip, page, 3d, booklet, book, perspective" />
+		<meta name="author" content="gbin1.com" />
+		<link rel="shortcut icon" href="../favicon.ico"> 
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="css/custom.css" />
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300' rel='stylesheet' type='text/css' />
+		<script type="text/javascript" src="js/modernizr.custom.79639.js"></script> 
+		<noscript><link rel="stylesheet" type="text/css" href="css/noJS.css" /></noscript>
+	</head>
+	<body>
+		<div class="container">
+
+			<header>
+
+				<h1>Animal World Book Demo</h1>
+				<h2>Flip any content like in a book</h2>
+				
+				<div class="support-note"><!-- let's check browser support with modernizr -->
+					<span class="no-csstransforms">CSS transforms are not supported in your browser</span>
+					<span class="no-csstransforms3d">CSS 3D transforms are not supported in your browser</span>
+					<span class="no-csstransitions">CSS transitions are not supported in your browser</span>
+				</div>
+				
+			</header>
+			
+			<section class="main">
+
+				<div class="bb-custom-wrapper">
+					<div id="bb-bookblock" class="bb-bookblock">
+						<div class="bb-item">
+							<a href="http://www.gbin1.com"><img src="images/animals/a.jpg" alt="image01"/></a>
+						</div>
+						<div class="bb-item">
+							<a href="http://www.gbin1.com"><img src="images/animals/b.jpg" alt="image02"/></a>
+						</div>
+						<div class="bb-item">
+							<a href="http://www.gbin1.com"><img src="images/animals/c.jpg" alt="image03"/></a>
+						</div>
+						<div class="bb-item">
+							<a href="http://www.gbin1.com"><img src="images/animals/d.jpg" alt="image04"/></a>
+						</div>
+						<div class="bb-item">
+							<a href="http://www.gbin1.com"><img src="images/animals/e.jpg" alt="image05"/></a>
+						</div>
+						<div class="bb-item">
+							<a href="http://www.gbin1.com"><img src="images/animals/f.jpg" alt="image05"/></a>
+						</div>
+					</div>
+					<h3>Photo from <a href="http://gbin1.com">GBin1</a></h3>
+					<nav>
+						<a id="bb-nav-prev" href="#">Previous</a>
+						<a id="bb-nav-next" href="#">Next</a>
+						<a id="bb-nav-jump" href="#" title="Go to last item">Last page</a>
+					</nav>
+				</div>
+				
+			</section>
+			
+		</div>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquerypp.custom.js"></script>
+		<script type="text/javascript" src="js/jquery.bookblock.js"></script>
+		<script type="text/javascript">
+			$(function() {
+
+				var Page = (function() {
+
+					var config = {
+							$bookBlock: $( '#bb-bookblock' ),
+							$navNext	: $( '#bb-nav-next' ),
+							$navPrev	: $( '#bb-nav-prev' ),
+							$navJump	: $( '#bb-nav-jump' ),
+							bb				: $( '#bb-bookblock' ).bookblock( {
+								speed				: 800,
+								shadowSides	: 0.8,
+								shadowFlip	: 0.7
+							} )
+						},
+						init = function() {
+
+							initEvents();
+							
+						},
+						initEvents = function() {
+
+							var $slides = config.$bookBlock.children(),
+									totalSlides = $slides.length;
+
+							// add navigation events
+							config.$navNext.on( 'click', function() {
+
+								config.bb.next();
+								return false;
+
+							} );
+
+							config.$navPrev.on( 'click', function() {
+								
+								config.bb.prev();
+								return false;
+
+							} );
+
+							config.$navJump.on( 'click', function() {
+								
+								config.bb.jump( totalSlides );
+								return false;
+
+							} );
+							
+							// add swipe events
+							$slides.on( {
+
+								'swipeleft'		: function( event ) {
+								
+									config.bb.next();
+									return false;
+
+								},
+								'swiperight'	: function( event ) {
+								
+									config.bb.prev();
+									return false;
+									
+								}
+
+							} );
+
+						};
+
+						return { init : init };
+
+				})();
+
+				Page.init();
+
+			});
+		</script>
+	</body>
+</html>

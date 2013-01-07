@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="width=1024" name="viewport" />
+<style>
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  font-family: "Georgia", serif;
+  overflow: auto;
+}
+
+#wrapper{
+	width: 960px;
+	height: 280px;
+	margin: 0 auto;
+	position: relative;
+}
+
+#wrapper .arrow-left, #wrapper .arrow-right{
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	border: 1px solid #333;
+	border-radius: 16px;
+	background-color: #252525;
+	background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(255,255,255, 1)),
+      color-stop(.9, transparent),
+      to(rgba(88,88,88,0.3))
+    );
+    display: none;
+    color: #ececec;
+    text-align: center;
+    line-height: 32px;
+    text-decoration:none;
+    font-size: 16px;
+    font-weight: bold;
+}
+#wrapper .arrow-left:hover, #wrapper .arrow-right:hover{
+	-webkit-box-shadow: 1px 2px 5px rgba(255, 255, 255, 0.3);
+}
+#wrapper .arrow-left{
+	left: 320px;
+	top: 180px;
+}
+
+#wrapper .arrow-right{
+	right: 320px;
+	top: 180px;
+}
+
+#gallery {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 960px;
+  height: 280px;
+  margin: 0 auto;
+  -webkit-perspective: 600px;
+  overflow: hidden;
+  -webkit-mask-image: -webkit-gradient(linear, left top, right top, color-stop(0, rgba(0,0,0,.2)), color-stop(.1, rgba(0,0,0,1)), color-stop(.9, rgba(0,0,0,1)), color-stop(1, rgba(0,0,0,.2)) );
+}
+
+#gallery .g-bg{
+	background-color: #fff;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+#gallery img {
+  -webkit-box-reflect:
+    below
+    0
+   -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(transparent),
+      color-stop(.8, transparent),
+      to(rgba(255,255,255,0.5))
+    );
+    
+    -webkit-border-radius: 10px;
+	-webkit-box-shadow: 1px 3px 8px rgba(0,0,0,0.9);
+	border: 1px solid #666;
+    max-width: inherit;
+    max-height: inherit;
+    display: none;
+}
+
+#gallery div {
+  position: absolute;
+  
+  padding-top: 110px;
+  top: -110px;
+}
+
+
+/***************** Cover Flow End *****************/
+
+
+
+
+/********************** item css3 start *************************/
+
+.section1,.section2,.section3,.section4{
+	clear: both;
+}
+
+.section1 article,
+.section2 article,
+.section3 article,
+.section4 article{
+	width: 100px;
+	height: 100px;
+	position: relative;
+	
+}
+
+.section1 article header,
+.section1 article div.s2,
+.section2 article header,
+.section2 article div.s2,
+.section3 article .face,
+.section4 article header,
+.section4 article div.s2{
+	-webkit-backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition-duration: 0.4s;
+    -webkit-transition-property: all;
+    -webkit-transition-timing-function: ease-in;
+    width: 100%;
+    height: 100%;
+    
+    -webkit-border-radius: 20px;
+	-webkit-box-shadow: 1px 3px 7px rgba(0, 0, 0, .5);
+	
+	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, 
+		from(rgba(255,255,255, .7)),
+      	color-stop(.6, rgba(0,0,0, .3)),
+      	to(rgba(0,0,0,0.1))
+	);
+}
+.section1 article,
+.section2 article,
+.section3 article,
+.section4 article{
+	float: left;
+	display: inline-block;
+	margin: 20px;
+}
+.section1 article header{
+	position: relative;
+    -webkit-transform: rotateY(0deg) scale(1);
+    z-index: 2;
+}
+.section1 article .s2{
+	position: absolute;
+    top: 0;
+    -webkit-transform: rotateY(180deg) scale(1);
+    z-index: 1;
+}
+.section1 article:hover header{
+	-webkit-transform: rotateY(-180deg) scale(1.5);
+}
+.section1 article:hover .s2{
+	-webkit-transform: rotateY(0deg) scale(1.5);
+	z-index: 3;
+}
+
+.section1 article.item1 header{
+	background-color: #666036;
+	border: 1px solid #666036;			
+}
+.section1 article.item1 .s2{
+	background-color: #666036;
+	border: 1px solid #666036;
+}
+
+.section1 article.item2 header{
+	background-color: #647bbb;
+	border: 1px solid #647bbb;
+}
+.section1 article.item2 .s2{
+	background-color: #647bbb;
+	border: 1px solid #647bbb;
+}
+
+.section1 article.item3 header{
+	background-color: #202e75;
+	border: 1px solid #202e75;
+}
+.section1 article.item3 .s2{
+	background-color: #202e75;
+	border: 1px solid #202e75;
+}
+
+.section1 article.item4 header{
+	background-color: #a61414;
+	border: 1px solid #a61414;
+}
+.section1 article.item4 .s2{
+	background-color: #a61414;
+	border: 1px solid #a61414;
+}
+
+
+
+.section2 article header{
+	position: relative;
+    -webkit-transform: rotate(0deg) scale(1);
+    z-index: 2;
+}
+
+.section2 article:hover header{
+	-webkit-transform: rotate(360deg) scale(1.5);
+}
+.section2 .item1 header{
+	background-color: #8a8149;
+	border: 1px solid #8a8149;
+}
+.section2 .item2 header{
+	background-color: #330a0a;
+	border: 1px solid #330a0a;
+}
+.section2 .item3 header{
+	background-color: #c29090;
+	border: 1px solid #c29090;
+}
+.section2 .item4 header{
+	background-color: #4d5280;
+	border: 1px solid #4d5280;
+}
+
+.section3 article header{
+    position: relative;
+    height: 100px;
+    width: 100px;
+    -webkit-transition: -webkit-transform .4s ease-in;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+}
+    
+.section3 .face {
+      position: absolute;
+      height: 100px;
+      width: 100px;
+}
+    
+.section3 article .one  {
+    -webkit-transform: rotateX(90deg) translateZ(50px);
+}
+.section3 article .two {
+      -webkit-transform: translateZ(50px);
+}
+.section3 article .three {
+      -webkit-transform: rotateY(90deg) translateZ(50px);
+}
+.section3 article .four {
+      -webkit-transform: rotateY(180deg) translateZ(50px);
+      
+    }
+.section3 article .five {
+      -webkit-transform: rotateY(-90deg) translateZ(50px);
+      
+    }
+.section3 article .six {
+      -webkit-transform: rotateX(-90deg) translateZ(50px) rotate(180deg);
+}
+.section3 article header:hover{
+	-webkit-transform: rotateX(-180deg) scale3d(1.5,1.5,1.5);
+	
+}
+
+.section3 .item1 .face{
+	background-color: #216049;
+	border: 1px solid #216049;
+}
+.section3 .item2 .face{
+	background-color: #817629;
+	border: 1px solid #817629;
+}
+.section3 .item3 .face{
+	background-color: #26b9cf;
+	border: 1px solid #26b9cf;
+}
+.section3 .item4 .face{
+	background-color: #773b3b;
+	border: 1px solid #773b3b;
+}
+
+
+
+
+.section4 article header{
+	position: relative;
+    -webkit-transform: scale(1);
+    z-index: 2;
+    opacity: 1;
+}
+.section4 article .s2{
+	position: absolute;
+    top: 0;
+    -webkit-transform: scale(1);
+    opacity: 0;
+    z-index: 1;
+}
+.section4 article:hover header{
+	-webkit-transform: scale(1);
+	opacity: 0;
+}
+.section4 article:hover .s2{
+	-webkit-transform: rotateY(0deg) scale(1.5);
+	opacity: 1;
+	z-index: 3;
+}
+
+.section4 article.item1 header{
+	background-color: #666036;
+	border: 1px solid #666036;			
+}
+.section4 article.item1 .s2{
+	background-color: #666036;
+	border: 1px solid #666036;
+}
+
+.section4 article.item2 header{
+	background-color: #647bbb;
+	border: 1px solid #647bbb;
+}
+.section4 article.item2 .s2{
+	background-color: #647bbb;
+	border: 1px solid #647bbb;
+}
+
+.section4 article.item3 header{
+	background-color: #202e75;
+	border: 1px solid #202e75;
+}
+.section4 article.item3 .s2{
+	background-color: #202e75;
+	border: 1px solid #202e75;
+}
+
+.section4 article.item4 header{
+	background-color: #a61414;
+	border: 1px solid #a61414;
+}
+.section4 article.item4 .s2{
+	background-color: #a61414;
+	border: 1px solid #a61414;
+}
+
+
+
+
+
+/************** item css3 end *****************/
+
+#nav{
+	height: 50px;
+}
+
+.line-down,.line-up{
+	width: 980px;
+	height: 15px;
+	margin: 0 auto;
+	background: url('./images/line-down.jpg') center top no-repeat;
+	border-top: 1px solid #CED0D5;
+}
+.line-up{
+	background-image: url('./images/line-up.jpg');
+	border-top: 0;
+	border-bottom: 1px solid #CED0D5;
+}
+
+.line-right{
+	height: 580px;
+	width: 15px;
+	margin: auto 0;
+	background: url('./images/line-right.jpg') left center no-repeat;
+	border-left: 1px solid #CED0D5;
+}
+
+
+.content-body{
+	width: 960px;
+	margin: 0 auto;
+	clear: both;
+}
+.ct-left{
+	float: left;
+	width: 620px;
+	height: 820px;
+}
+
+.ct-left section{
+	height: 180px;
+}
+
+.ct-left section h3{
+	position: relative;
+}
+.ct-left section h3 span{
+	display: inline-block;
+	cursor: move;
+	height: 24px;
+	line-height: 24px;
+	width: 80px;
+	text-align: center;
+	background-color: #383838;
+	border: 1px solid #383838;
+	color: #fff;
+	font-size: 14px;
+	-webkit-border-radius: 5px 5px 0 5px;
+	
+	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, 
+		from(rgba(255,255,255, .7)),
+      	color-stop(.6, rgba(0,0,0, .3)),
+      	to(rgba(0,0,0,0.1))
+	);
+}
+.ct-left section h3 .bt-line{
+	position: absolute;
+	border-bottom: 1px solid #676767;
+	left: 5px;
+	bottom: 0;
+	width: 99%;
+}
+
+.ct-spr-line{
+	float: left;
+	margin: 20px 0 0 40px;
+}
+
+.ct-right{
+	float: right;
+	width: 280px;
+}
+
+ul,ol,li {
+	list-style:none;
+	padding: 0;
+	margin: 0;
+}
+
+.rt-menu{
+	margin: 30px
+}
+
+.rt-menu li{
+	position: relative;
+	border-bottom: 1px solid #d7d7d7;
+}
+.rt-menu li a{
+	color: #393939;
+	font-size: 16px;
+	text-decoration: none;
+	display: block;
+	height: 38px;
+	line-height: 38px;
+	width:205px;
+	padding-left: 15px;
+	background-color: #fff;
+	
+	-webkit-backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition-duration: 0.4s;
+    -webkit-transition-property: all;
+    -webkit-transition-timing-function: ease-in;
+}
+.rt-menu li a.s1{
+	position: relative;
+    -webkit-transform: rotateX(0deg);
+    z-index: 2;
+}
+.rt-menu li a.s2{
+	position: absolute;
+    top: 0;
+    -webkit-transform: rotateX(180deg);
+    z-index: 1;
+}
+.rt-menu li:hover a.s1{
+	-webkit-transform: rotateX(-180deg);
+}
+.rt-menu li:hover a.s2{
+	-webkit-transform: rotateX(0deg);
+	z-index: 3;
+	background-color: #eaeaea;
+}
+
+
+
+#footer{
+	height: 50px;
+}
+
+
+</style>
+
+
+
+
+</head>
+
+<body>
+
+<!-- 导航 -->
+<div id="nav">
+	
+</div>
+<!-- 导航end -->
+
+<div class="line-down">
+</div>
+
+<div id="wrapper">
+  <div id="gallery">
+	<img src="./images/h1.jpg" alt="1" />
+    <img src="./images/h2.jpg" alt="2" />
+    <img src="./images/h3.jpg" alt="3" />
+    <img src="./images/h4.jpg" alt="4" />
+    <img src="./images/h5.jpg" alt="5" />
+    <img src="./images/h6.jpg" alt="6" />
+    <img src="./images/h7.jpg" alt="7" />
+    <img src="./images/h8.jpg" alt="8" />
+    <img src="./images/h9.jpg" alt="9" />
+    
+    
+  </div>
+  <a href="#" class="arrow-left">&lt;</a>
+  <a href="#" class="arrow-right">&gt;</a>
+</div>
+
+<div class="line-up">
+</div>
+
+<div class="content-body">
+	<div class="ct-left">
+		
+		<section class="section4">
+			<h3 class="d-handle"><span>精品推荐</span><div class="bt-line"></div></h3>
+			<article class="item1">
+				<header>
+				</header>
+				<div class="s2">
+				</div>
+			</article>
+			<article class="item2">
+				<header>
+				</header>
+				<div class="s2">
+				</div>
+			</article>
+			<article class="item3">
+				<header>
+				</header>
+				<div class="s2">
+				</div>
+			</article>
+			<article class="item4">
+				<header>
+				</header>
+				<div class="s2">
+				</div>
+			</article>
+		</section>
+		
+		
+		
+		<section class="section1">
+			<h3 class="d-handle"><span>周边邻居</span><div class="bt-line"></div></h3>
+			<article class="item1">
+				<header>
+				</header>
+				<div class="s2">
+				</div>
+			</article>
+			<article class="item2">
+				<header>
+				</header>
+				<div class="s2">
+				</div>
+			</article>
+			<article class="item3">
+				<header>
+				</header>
+				<div class="s2">
+				</div>
+			</article>
+			<article class="item4">
+				<header>
+				</header>
+				<div class="s2">
+				</div>
+			</article>
+		</section>
+		
+		<section class="section2">
+			<h3 class="d-handle"><span>小区活动</span><div class="bt-line"></div></h3>
+			<article class="item1">
+				<header>
+				</header>
+			</article>
+			<article class="item2">
+				<header>
+				</header>
+			</article>
+			<article class="item3">
+				<header>
+				</header>
+			</article>
+			<article class="item4">
+				<header>
+				</header>
+			</article>
+		</section>
+		
+	
+		<section class="section3">
+			<h3 class="d-handle"><span>小区群购</span><div class="bt-line"></div></h3>
+			<article class="item1">
+				<header>
+				<div class="face one"></div>
+                <div class="face two"></div>
+                <div class="face three"></div>
+                <div class="face four"></div>
+                <div class="face five"></div>
+                <div class="face six"></div>
+				</header>
+			</article>
+			<article class="item2">
+				<header>
+				<div class="face one"></div>
+                <div class="face two"></div>
+                <div class="face three"></div>
+                <div class="face four"></div>
+                <div class="face five"></div>
+                <div class="face six"></div>
+                </header>
+			</article>
+			<article class="item3">
+				<header>
+				<div class="face one"></div>
+                <div class="face two"></div>
+                <div class="face three"></div>
+                <div class="face four"></div>
+                <div class="face five"></div>
+                <div class="face six"></div>
+				</header>
+			</article>
+			<article class="item4">
+				<header>
+				<div class="face one"></div>
+                <div class="face two"></div>
+                <div class="face three"></div>
+                <div class="face four"></div>
+                <div class="face five"></div>
+                <div class="face six"></div>
+				</header>
+			</article>
+		</section>
+		
+		
+	</div>
+	
+	
+	<div class="ct-spr-line line-right">
+	</div>
+	
+	
+	<div class="ct-right">
+		<ul class="rt-menu">
+			<li>
+				<a class="s1" href="#">精品推荐</a>
+				<a class="s2" href="#">精品推荐</a>
+			</li>
+			<li>
+				<a class="s1" href="#">小区群购</a>
+				<a class="s2" href="#">小区群购</a>
+			</li>
+			<li>
+				<a class="s1" href="#">找商家</a>
+				<a class="s2" href="#">找商家</a>
+			</li>
+			<li>
+				<a class="s1" href="#">找邻居</a>
+				<a class="s2" href="#">找邻居</a>
+			</li>
+			<li>
+				<a class="s1" href="#">社区新闻</a>
+				<a class="s2" href="#">社区新闻</a>
+			</li>
+			<li>
+				<a class="s1" href="#">家长里短</a>
+				<a class="s2" href="#">家长里短</a>
+			</li>
+			<li>
+				<a class="s1" href="#">社区通知</a>
+				<a class="s2" href="#">社区通知</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div style="clear:both;"></div>
+
+<div class="line-down">
+</div>
+
+<div id="footer">
+</div>
+
+</body>
+
+<script src="./lib/jquery-1.7.2.min.js"></script>
+
+<script src="./lib/jquery.ui.core.js"></script>
+<script src="./lib/jquery.ui.widget.js"></script>
+<script src="./lib/jquery.ui.mouse.js"></script>
+<script src="./lib/jquery.ui.sortable.js"></script>
+
+<!-- touch gesture的兼容模式 -->
+<script src="./lib/jquery.jswipe-0.1.2.js"></script>
+
+<!-- sortable的touch兼容模式 -->
+<script src="./lib/jquery.ui.touch-punch.js"></script>
+<script type="text/javascript">
+
+(function($) {
+
+//  --- Begin Config ---
+var loadingMessageDelay = 2000;       // How long to wait before showing loading message (in ms)
+var loadingMessageSpeed = 1200;       // Duration of each pulse in/out of the loading message (in ms)
+var loadingMessageMinOpacity = 0.4;   // Minimum opacity of the loading message
+var loadingMessageMaxOpacity = 1;     // Maximum opacity of the loading message
+var bgRotateAngle = 35;               // Rotation angle of background slides (in degrees)
+var stepPercent = 15;                 // Horiz gap between background slides (as % of window height)
+var currentSlidePaddingPercent = 70;  // Horiz gap between current slide and background slides (as % of window height)
+var swipeXThreshold = 30;             // X-axis minimum threshold for swipe action (in px) 
+var swipeYThreshold = 90;             // Y-axis maximum threshold for swipe action (in px) 
+var leftKeyCode = 37;                 // Character code for "move left" key (default: left arrow)
+var rightKeyCode = 39;                // Character code for "move right" key (default: right arrow)
+//  --- End Config ---
+
+var currentSlide = 5;                 // The slide that the user is currently viewing
+var oldCurrentSlide = currentSlide;   // The previous slide that the user viewed
+var totalSlides = 0;                  // Total number of slides in the gallery (computed later)
+var flipTimeouts = [];         	      // For storing the timeout IDs so we can clear them
+
+var coverTimer = null;
+
+var cubicBezier = 'cubic-bezier(0, 0, .25, 1)';
+
+var disArrs = [];
+
+
+// Set up the gallery
+
+function init() {
+
+  totalSlides = $('#gallery img').length;  // Total number of slides in the gallery
+  var pos = 0;  // To track the index of the slide we're working with
+
+  $('#gallery img').each( function() {
+    $(this).css( 'display', 'inline' );
+    var div = $('<div />').data('slideNum',++pos);
+    $(this).wrap( div );
+    $(this).parent().data('oldLeftPos',0);
+  });
+  
+  $('#gallery').swipe( {
+  	swipeLeft: moveRight,
+    swipeRight: moveLeft,
+    threshold: { x:swipeXThreshold, y:swipeYThreshold }
+  });
+  
+  
+  $('.arrow-left').bind('click', function(e) {
+  	e.stopPropagation();
+	e.preventDefault();
+	moveLeft();
+  });
+  $('.arrow-right').bind('click', function(e) {
+  	e.stopPropagation();
+	e.preventDefault();
+	moveRight();
+  });
+  
+  $('#wrapper').bind('mouseenter touchstart', function(e) {
+  	$('.arrow-left').fadeIn();
+  	$('.arrow-right').fadeIn();
+  	clearInterval(coverTimer);
+  	coverTimer = null;
+  }).bind('mouseleave touchend', function(e) {
+  	$('.arrow-left').fadeOut();
+  	$('.arrow-right').fadeOut();
+  	autoCover();
+  });
+  displayGallery();
+
+}
+
+// Display the slides in the gallery
+// usInit: 如果是初始化状态不执行动画，设置动画时间为0；
+/*
+ * {
+ * 		dis: number --> 移动的距离
+ * }
+ */
+
+function displayGallery(option) {
+  var pos = 0;                              // To track the index of the slide we're working with
+  var galleryWidth = $('#gallery').width(); // Width of the gallery/viewport in px
+  var galleryCentre = galleryWidth / 2;     // Horizontal centre point of the gallery in px
+  // var windowHeight = $(window).height();    // Viewport height in px
+  var windowHeight = 640;
+  // var slideHeight = windowHeight - 150;     // Maximum slide height based on window height
+  var slideHeight = 360;
+
+  // Compute the actual step and slide padding values, based on window height
+  var step = windowHeight * stepPercent / 100;
+  var currentSlidePadding = windowHeight * currentSlidePaddingPercent / 100;
+  
+  var slideDur = 1; 	// animate time
+  
+  var currentIndex = 999; 	// 当前视口元素的索引值
+  
+  var dis = option && option.dis ? option.dis : 0;
+  
+  var distance = step + currentSlidePadding - 150;
+  
+  var tm = dis/distance;
+  
+  console.log(distance);
+  
+  disArrs = [];
+
+  // while ( t = flipTimeouts.pop() ) clearTimeout(t);
+
+  $('#gallery div').each( function(__index, __item) {
+
+    var div = $(this);
+    var __z = div.width()/2;
+    if ( ++pos < currentSlide ) {
+		var _idx = __index;
+		if(pos == (currentSlide-1)) {
+			_idx = currentIndex - 1;
+		}
+        var leftPos = galleryCentre - (( currentSlide-pos) * step) - __z - currentSlidePadding + 150;
+        disArrs.push(leftPos);
+      
+      	var __d = (__index == 0) ? 0 : slideDur;
+        div.css({
+          'z-index':_idx,
+          '-webkit-transition': '-webkit-transform '+ __d +'s ' + cubicBezier,
+          '-webkit-transform': 'translate3d(' + leftPos + 'px,0,-' + __z + 'px) rotateY(' + bgRotateAngle + 'deg)'
+        });
+    } else if ( pos > currentSlide ) {
+    	var _idx = (100 - __index);
+    	if(pos == (currentSlide+1)) {
+    		_idx = currentIndex - 1;
+    	}
+        var leftPos = galleryCentre + ((pos-currentSlide) * step) - __z + currentSlidePadding - 150;
+		disArrs.push(leftPos);
+      	
+      	var __d = (__index == (totalSlides-1)) ? 0 : slideDur;
+        div.css({
+        	'z-index': _idx,
+          '-webkit-transition': '-webkit-transform '+ __d +'s ' + cubicBezier,
+          '-webkit-transform': 'translate3d(' + leftPos + 'px,0,-' + __z + 'px) rotateY(-' + bgRotateAngle + 'deg)'
+        });
+    } else {
+      var leftPos = galleryCentre - __z;
+      disArrs.push(leftPos);
+      div.css({
+      	'-webkit-transition': '-webkit-transform '+ slideDur +'s ' + cubicBezier,
+        '-webkit-transform': 'translate3d(' + leftPos + 'px,0,0) rotateY(0deg)',
+        'z-index': currentIndex
+      });
+    }
+  });
+  console.log(disArrs);
+}
+
+
+function circle() {
+	var g = $('#gallery');
+	g.append(g.find('div:first'));
+}
+
+
+function moveLeft() {
+  if ( currentSlide > 1 ) {
+  	$('#gallery').prepend($('#gallery div:last'));
+    oldCurrentSlide = currentSlide; 
+    // currentSlide--;
+    displayGallery();
+  }
+}
+
+function autoCover() {
+	coverTimer = setInterval(function() {
+		moveRight();
+	}, 3000);
+}
+
+function moveRight() {
+  if ( currentSlide < totalSlides ) {
+  	$('#gallery').append($('#gallery div:first'));
+    oldCurrentSlide = currentSlide;
+    // currentSlide++;
+    displayGallery();
+  }
+}
+
+$(document).ready(function() {
+	setTimeout(function() {
+		init();
+	}, 300);
+	// autoCover();
+	var dging = null;
+	
+	$('.ct-left').sortable({
+		axis: "y",
+		items: "> section",
+		handle: '.d-handle',
+		cursor: 'move',
+		start: function(e, ui) {
+			var f = 0,
+				deg = '-3';
+			dging = setInterval(function() {
+				if(f%2 == 0) {
+					deg = '-3';
+				} else {
+					deg = '2'
+				}
+				$(ui.item).find('article').each(function(index, item) {
+					$(item).css({
+						'-webkit-transform': 'rotate('+ deg +'deg)'
+					});
+				});
+				f ++;
+			}, 93);
+		},
+		stop: function(e, ui) {
+			clearInterval(dging);
+			dging = null;
+			$(ui.item).find('article').each(function(index, item) {
+				$(item).css({
+					'-webkit-transform': 'none'
+				});
+			});
+		}
+	});
+	
+});
+
+window['displayGallery'] = displayGallery;
+
+})(jQuery);
+
+</script>
+</html>
+
+
+
+

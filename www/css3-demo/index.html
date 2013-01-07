@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=1024">
+		<style>
+			body{
+				margin: 0;
+				padding: 0;
+			}
+			
+			
+/*
+			.test{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+			
+			.test-anim{
+				-webkit-transition:all 0.6s ease-in-out;   
+    			-webkit-animation:all 0.6s ease-in-out;
+			}
+			
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+*/
+
+.section1,.section2{
+	clear: both;
+}
+
+.section1 article,
+.section2 article{
+	width: 100px;
+	height: 100px;
+	position: relative;
+}
+
+.section1 article header,
+.section1 article div.s2,
+.section2 article header,
+.section2 article div.s2{
+	-webkit-backface-visibility: hidden;
+    height: 100%;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition-duration: 0.4s;
+    -webkit-transition-property: all;
+    -webkit-transition-timing-function: ease-in;
+    width: 100%;
+}
+.section1 article,
+.section2 article{
+	float: left;
+	display: inline-block;
+	margin: 20px;
+}
+.section1 article header{
+	position: relative;
+    -webkit-transform: rotateY(0deg) scale(1);
+    z-index: 2;
+}
+.section1 article .s2{
+	position: absolute;
+    top: 0;
+    -webkit-transform: rotateY(180deg) scale(1);
+    z-index: 1;
+}
+.section1 article:hover header{
+	-webkit-transform: rotateY(-180deg) scale(1.5);
+}
+.section1 article:hover .s2{
+	-webkit-transform: rotateY(0deg) scale(1.5);
+	z-index: 3;
+}
+
+.section1 article.item1 header{
+	background-color: blue;
+}
+.section1 article.item1 .s2{
+	background-color: red;
+}
+
+.section1 article.item2 header{
+	background-color: #333;
+}
+.section1 article.item2 .s2{
+	background-color: #aaa;
+}
+
+.section1 article.item3 header{
+	background-color: yellow;
+}
+.section1 article.item3 .s2{
+	background-color: green;
+}
+
+.section1 article.item4 header{
+	background-color: purple;
+}
+.section1 article.item4 .s2{
+	background-color: red;
+}
+
+
+
+
+.section2 article.item1 header{
+	background-color: blue;
+}
+.section2 article header{
+	position: relative;
+    -webkit-transform: rotate(0deg) scale(1);
+    z-index: 2;
+}
+
+.section2 article:hover header{
+	-webkit-transform: rotate(360deg) scale(1.5);
+}
+
+
+		</style>
+	</head>
+	<body>
+		<div class="test"> </div>
+		
+		
+		<section class="section1">
+			<article class="item1">
+				<header>
+				</header>
+				<div class="s2">
+				</div>
+			</article>
+			<article class="item2">
+				<header>
+				</header>
+				<div class="s2">
+				</div>
+			</article>
+			<article class="item3">
+				<header>
+				</header>
+				<div class="s2">
+				</div>
+			</article>
+			<article class="item4">
+				<header>
+				</header>
+				<div class="s2">
+				</div>
+			</article>
+		</section>
+		
+		<section class="section2">
+			<article class="item1">
+				<header>
+				</header>
+			</article>
+			<article class="item2">
+				<header>
+				</header>
+				<div class="s2">
+				</div>
+			</article>
+			<article class="item3">
+				<header>
+				</header>
+				<div class="s2">
+				</div>
+			</article>
+			<article class="item4">
+				<header>
+				</header>
+				<div class="s2">
+				</div>
+			</article>
+		</section>
+	</body>
+	<script src="jquery-1.8.1.min.js"> </script>
+	<script>
+		(function($) {
+			/*
+			$('.test').css({
+				'-webkit-transform': 'translate(450px, 0)',
+				'opacity': 0.4
+			});
+			$('.test').addClass('test-anim');
+			return;
+			$('.test').css({
+				'-webkit-transform': 'translate(-450px, 0)',
+				'-webkit-animation-name': 'fadeIn'
+			});
+			*/
+		})(jQuery);
+	</script>
+</html>
+
+

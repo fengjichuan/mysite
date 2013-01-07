@@ -20,6 +20,7 @@
 
 */
 (function() {
+
     jQTouchCore = function(options) {
         // Initialize internal jQT variables
         var $ = options.framework,
@@ -118,6 +119,7 @@
 
         }
         function doNavigation(fromPage, toPage, animation, goingBack) {
+
             goingBack = goingBack ? goingBack : false;
 
             // Error check for target page
@@ -278,6 +280,7 @@
                     }
                 }
             }
+
             if (typeof toPage === 'string') {
                 var nextPage = $(toPage);
 
@@ -290,13 +293,11 @@
                     toPage = nextPage;
                 }
             }
-            
             if (doNavigation(fromPage, toPage, animation)) {
                 return publicObj;
             } else {
                 return false;
             }
-            
         }
         function hashChangeHandler(e) {
             if (location.hash === history[0].hash) {
@@ -419,6 +420,7 @@
             location.hash = '#' + hash.replace(/^#/, '');
         }
         function showPageByHref(href, options) {
+
             var defaults = {
                 data: null,
                 method: 'GET',
@@ -428,6 +430,7 @@
             };
 
             var settings = $.extend({}, defaults, options);
+
             if (href != '#') {
                 $.ajax({
                     url: href,
@@ -609,6 +612,7 @@
 
         // Document ready stuff
         $(document).ready(function RUMBLE() {
+
             // Store some properties in a support object
             if (!$.support) $.support = {};
             $.support.animationEvents = (typeof window.WebKitAnimationEvent != 'undefined');
@@ -691,9 +695,9 @@
                 .bind('tap', tapHandler)
                 .bind( $.support.touch ? 'touchstart' : 'mousedown', touchStartHandler)
                 .trigger('orientationchange');
-            $(window).bind('hashchange', hashChangeHandler);
             
-			
+            $(window).bind('hashchange', hashChangeHandler);
+
             var startHash = location.hash;
 
             // Determine what the initial view should be

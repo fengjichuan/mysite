@@ -1,0 +1,76 @@
+/* JS-Enabled CSS */
+
+.widget-head a.remove  {
+    position:absolute;
+    right:5px;
+    top:6px;
+    display: block;
+    width: 12px;
+    height: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+    color: #cdcdcd;
+    line-height: 12px;
+    font-size:10px;
+    
+}
+
+.widget-head a.collapse  {
+    position:absolute;
+    right:24px;
+    top:6px;
+    display: block;
+    width: 12px;
+    height: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+    color: #cdcdcd;
+    line-height: 12px;
+    font-size:10px;
+    
+}
+
+.widget-head a.remove:hover, .widget-head a.collapse:hover{
+	background-color: #fff;
+	border-color: #aaa;
+	color: #999;
+}
+
+.widget-placeholder { border: 2px dashed #999;}
+#column1 .widget-placeholder { margin: 0 12px 15px 0px; }
+#column2 .widget-placeholder { margin: 0 6px 15px 6px; }
+#column3 .widget-placeholder { margin: 0 0px 15px 12px; }
+
+.edit-box {
+    overflow: hidden;
+    background: #333 url(img/widget-content-bg.png) repeat-x;
+    margin-bottom: 2px;
+    padding: 10px 0;
+}
+
+.edit-box li.item {
+    padding: 10px 0;
+    overflow: hidden;
+    float: left;
+    width: 100%;
+    clear: both;
+}
+
+
+.edit-box label {
+    float: left;
+    width: 30%;
+    color: #FFF;
+    padding: 0 0 0 10px;
+}
+
+.edit-box ul.colors li {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #EEE;
+    float: left;
+    display: inline;
+    margin: 0 5px 0 0;
+    cursor: pointer;
+}
+

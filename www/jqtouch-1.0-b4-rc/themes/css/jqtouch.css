@@ -1,49 +1,3 @@
-
-/*** just for test ***/
-
-.cstm-slideleft-in {
-  -webkit-animation-name: slideLeftIn1;
-  left: 100%;
-  top: 0;
-}
-
-/* line 102, ../scss/include/_animations.scss */
-.cstm-slideleft-out {
-  -webkit-animation-name: slideLeftOut1;
-}
-
-.cstm-current{
-	left: 0;
-	top: 0;
-	z-index: 999999;
-}
-
-@-webkit-keyframes slideLeftIn1 {
-  /* line 107, ../scss/include/_animations.scss */
-  0% {
-    -webkit-transform: translateX(100%);
-  }
-
-  /* line 110, ../scss/include/_animations.scss */
-  100% {
-    -webkit-transform: translateX(0);
-  }
-}
-
-@-webkit-keyframes slideLeftOut2 {
-  /* line 116, ../scss/include/_animations.scss */
-  0% {
-    -webkit-transform: translateX(0px);
-  }
-
-  /* line 119, ../scss/include/_animations.scss */
-  100% {
-    -webkit-transform: translateX(-100%);
-  }
-}
-
-
-
 /**
  * Background noise recipe
  * 
@@ -2035,11 +1989,3 @@ body {
   color: #444;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
-
-
-
-
-
-
-
-

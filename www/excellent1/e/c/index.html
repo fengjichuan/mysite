@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=1024">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>excellent demo</title>
+
+<style type="text/css" media="all">
+body,ul,li {
+	padding:0;
+	margin:0;
+}
+
+body {
+	font-size:12px;
+	-webkit-user-select:none;
+    -webkit-text-size-adjust:none;
+	font-family:helvetica;
+	text-align: center;
+	width: 100%;
+	
+	text-align: center;
+	background-color: #f2f2f2;
+	padding-top: 20px;
+}
+
+.content{
+	/*
+	width: 960px;
+	*/
+	
+	width: 90%;
+	overflow: hidden;
+	max-width: 960px;
+	_width: 960px;
+	*width: 960px;
+	height: 640px;
+	margin: 0 auto;
+	text-align: left;
+	position: relative;
+	background-color: #fff;
+	
+	/*
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	-o-border-radius:10px;
+	border-radius:10px;
+	*/
+	-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, .3);
+	-moz-box-shadow: 0 0 4px rgba(0, 0, 0, .3);
+	box-shadow: 0 0 4px rgba(0, 0, 0, .3);
+}
+
+#wrapper {
+	width:960px;
+	height:100%;
+
+	float:left;
+	position:relative;	/* On older OS versions "position" and "z-index" must be defined, */
+	z-index:1;			/* it seems that recent webkit is less picky and works anyway. */
+	overflow:hidden;
+}
+
+#scroller {
+	/*
+	width:12288px;
+	*/
+	width: 400%;
+	
+	height:100%;
+	padding:0;
+	position: absolute;
+	left: 0;
+}
+
+#scroller ul {
+	list-style:none;
+	display:block;
+	float:left;
+	width:100%;
+	height:100%;
+	padding:0;
+	margin:0;
+	text-align:left;
+}
+
+#scroller li {
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	box-sizing:border-box;
+	display:block;
+	float:left;
+	width:960px;
+	height:100%;
+	text-align:center;
+	font-family:georgia;
+	font-size:18px;
+	line-height:140%;
+	cursor: pointer;
+	position: relative;
+}
+#scroller li img{
+	position: absolute;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+}
+
+/*
+#scroller li.s-1{
+	background: url('images/1.jpeg') no-repeat;
+}
+#scroller li.s-2{
+	background: url('images/2.jpeg') no-repeat;
+}
+#scroller li.s-3{
+	background: url('images/3.jpeg') no-repeat;
+}
+#scroller li.s-4{
+	background: url('images/4.jpeg') no-repeat;
+}
+#scroller li.s-5{
+	background: url('images/5.jpeg') no-repeat;
+}
+#scroller li.s-6{
+	background: url('images/6.jpeg') no-repeat;
+}
+#scroller li.s-7{
+	background: url('images/7.jpeg') no-repeat;
+}
+#scroller li.s-8{
+	background: url('images/8.jpeg') no-repeat;
+}
+#scroller li.s-9{
+	background: url('images/9.jpeg') no-repeat;
+}
+#scroller li.s-10{
+	background: url('images/10.jpeg') no-repeat;
+}
+#scroller li.s-11{
+	background: url('images/11.jpeg') no-repeat;
+}
+#scroller li.s-12{
+	background: url('images/12.jpeg') no-repeat;
+}
+*/
+#scroller li .img-1{
+	-moz-background-size: cover;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 60%;
+	height: 100%;
+	position: absolute;
+	z-index: 1;
+}
+
+#scroller li.s-1 .img-1{
+	left: 0;
+	top: 120px;
+	width: 520px;
+	height: 315px;
+	background-image: url('images/b1.png');
+}
+#scroller li.s-2 .img-1{
+	right: 0;
+	bottom: 100px;
+	width: 600px;
+	height: 350px;
+	background-image: url('images/b11.png');
+}
+#scroller li.s-3 .img-1{
+	left: 0;
+	bottom: 0;
+	width: 809px;
+	height: 445px;
+	background-image: url('images/b2.png');
+}
+#scroller li.s-4 .img-1{
+	left: 0;
+	top: 80px;
+	width: 425px;
+	height: 567px;
+	background-image: url('images/b4.png');
+}
+#scroller li.s-5 .img-1{
+	right: 0;
+	bottom: 0;
+	width: 70%;
+	height: 80%;
+	background-image: url('images/c5.jpeg');
+}
+
+#scroller li.s-1 .img-or,
+#scroller li.s-2 .img-or,
+#scroller li.s-3 .img-or,
+#scroller li.s-4 .img-or,
+#scroller li.s-5 .img-or{
+	left: -160px;
+}
+#scroller li.s-3 .img-or{
+	top: -160px;
+}
+/*
+#scroller li.s-6 .img-1{
+	
+	background-image: url('images/6.jpeg');
+}
+#scroller li.s-7 .img-1{
+	
+	background-image: url('images/7.jpeg');
+}
+#scroller li.s-8 .img-1{
+	
+	background-image: url('images/8.jpeg');
+}
+#scroller li.s-9 .img-1{
+	
+	background-image: url('images/9.jpeg');
+}
+#scroller li.s-10 .img-1{
+	
+	background-image: url('images/10.jpeg');
+}
+#scroller li.s-11 .img-1{
+	
+	background-image: url('images/11.jpeg');
+}
+#scroller li.s-12 .img-1{
+	
+	background-image: url('images/12.jpeg');
+}
+*/
+.s-1 p,.s-2 p,.s-3 p,.s-4 p,.s-5 p,.s-6 p,.s-7 p,.s-8 p,.s-9 p,.s-10 p,.s-11 p,.s-12 p{
+	font-size: 36px;
+	left: 150px;
+	top: 100px;
+	
+	color: #333;
+	position: absolute;
+	z-index: 9;
+	display: block;
+	line-height: 40px;
+	text-align: left;
+	
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+
+.s-1 p {
+	left: 530px;
+	top: 120px;
+	
+}
+.s-1 p span.tt, .s-2 p span.tt, .s-3 p span.tt, .s-4 p span.tt{
+	color: #222;
+	font-size: 36px;
+	line-height: 48px;
+}
+.s-1 p span.sl, .s-2 p span.sl, .s-3 p span.sl, .s-4 p span.sl{
+	color: #8a8d99;
+	font-size: 32px;
+	line-height: 46px;
+}
+
+.s-2 p {
+	left: 100px;
+	top: 120px;
+	
+}
+
+.s-3 p {
+	left: 300px;
+	top: 70px;
+	
+}
+
+.s-4 p {
+	left: 450px;
+	top: 260px;
+	
+}
+
+
+#nav {
+	width:100%;
+	position: absolute;
+	bottom: 38px;
+	z-index: 999;
+	text-align: center;
+}
+
+#nav .nav-wapper{
+	width: 200px;
+	margin: 0 auto;
+}
+
+#prev, #next {
+	position: absolute;
+	top: 2px;
+	background: url('images/ad_prev.png') no-repeat;
+	width: 30px;
+	height: 30px;
+	opacity: 0.6;
+	filter: alpha(opacity=60);
+	display: none;
+	cursor: pointer;
+}
+
+#prev {
+	left: 4px;
+}
+
+#next {
+	right: 4px;
+	background: url('images/ad_next.png') no-repeat;
+}
+
+#indicator, #indicator > li {
+	display:block; float:left;
+	list-style:none;
+	padding:0; margin:0;
+}
+
+#indicator {
+	width:160px;
+	padding:12px 0 0 30px;
+}
+
+#indicator > li {
+	text-indent:-9999em;
+	width:8px; height:8px;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	-o-border-radius:4px;
+	border-radius:4px;
+	background:#ddd;
+	overflow:hidden;
+	margin-right:4px;
+	cursor: pointer;
+}
+
+#indicator > li.active {
+	background:#888;
+}
+
+#indicator > li:last-child {
+	margin:0;
+}
+
+</style>
+</head>
+<body>
+	
+<div class="content">
+	
+<div id="wrapper">
+	<div id="scroller">
+		<ul id="thelist">
+			<li class="s-1"><p _x="160" _y="0"><span class="tt">烤鸭</span><br /><span class="sl">色泽红亮，皮酥肉嫩<br />肥而不腻，入口即化</span></p><div class="img-1"></div></li>
+			<li class="s-2"><p _x="160" _y="0"><span class="tt">烤鸭</span><br /><span class="sl">色泽红亮，皮酥肉嫩<br />肥而不腻，入口即化</span></p><div class="img-1"></div></li>
+			<li class="s-3"><p _x="0" _y="70"><span class="tt">蓝莓山药 </span><span class="sl"> 冰凉幼滑，酸甜可口</span></p><div class="img-1"></div></li>
+			
+			<li class="s-4"><p _x="160" _y="0"><span class="tt">酸梅汤 </span><br /><span class="sl"> 自制酸梅汤，清凉解渴解油腻</span></p><div class="img-1"></div></li>
+			<!--
+			<li class="s-5"><p>附近撒浪费的撒范德萨<br />发动机撒浪费的萨芬撒<br />范德萨发来的撒浪费迪塞尔侮辱饿哦我<br /></p><div class="img-1"></div></li>
+			-->
+			
+			<!--
+			<li class="s-6"><p>附近撒浪费的撒范德萨<br />发动机撒浪费的萨芬撒<br />范德萨发来的撒浪费迪塞尔侮辱饿哦我<br /></p><div class="img-1"></div></li>
+			<li class="s-7"><p>附近撒浪费的撒范德萨<br />发动机撒浪费的萨芬撒<br />范德萨发来的撒浪费迪塞尔侮辱饿哦我<br /></p><div class="img-1"></div></li>
+			<li class="s-8"><p>附近撒浪费的撒范德萨<br />发动机撒浪费的萨芬撒<br />范德萨发来的撒浪费迪塞尔侮辱饿哦我<br /></p><div class="img-1"></div></li>
+			<li class="s-9"><p>附近撒浪费的撒范德萨<br />发动机撒浪费的萨芬撒<br />范德萨发来的撒浪费迪塞尔侮辱饿哦我<br /></p><div class="img-1"></div></li>
+			<li class="s-10"><p>附近撒浪费的撒范德萨<br />发动机撒浪费的萨芬撒<br />范德萨发来的撒浪费迪塞尔侮辱饿哦我<br /></p><div class="img-1"></div></li>
+			<li class="s-11"><p>附近撒浪费的撒范德萨<br />发动机撒浪费的萨芬撒<br />范德萨发来的撒浪费迪塞尔侮辱饿哦我<br /></p><div class="img-1"></div></li>
+			<li class="s-12"><p>附近撒浪费的撒范德萨<br />发动机撒浪费的萨芬撒<br />范德萨发来的撒浪费迪塞尔侮辱饿哦我<br /></p><div class="img-1"></div></li>
+			-->
+		</ul>
+	</div>
+</div>
+<div id="nav">
+	<div id="prev"></div>
+	
+	<div class="nav-wapper">
+	
+	<ul id="indicator">
+		<li class="active" index=0>1</li>
+		<li index=1>2</li>
+		<li index=2>3</li>
+		<li index=3>4</li>
+		<!--
+		<li index=4>5</li>
+		-->
+		<!--
+		<li index=5>6</li>
+		<li index=6>7</li>
+		<li index=7>8</li>
+		<li index=8>9</li>
+		<li index=9>10</li>
+		<li index=10>11</li>
+		<li index=11>12</li>
+		-->
+	</ul>
+	
+	</div>
+	
+	<div id="next"></div>
+</div>
+
+</div>
+
+</body>
+<script type="text/javascript" src="../../lib/jquery-1.7.2.min.js"></script>
+<!--
+<script type="text/javascript" src="../../src/iscroll.js"></script>
+-->
+<script src="./js/excellent.js"></script>
+
+<!--
+<script type="text/javascript">
+
+var myScroll;
+
+function loaded() {
+	myScroll = new iScroll('wrapper', {
+		snap: true,
+		momentum: false,
+		hScrollbar: false,
+		onScrollEnd: function () {
+			document.querySelector('#indicator > li.active').className = '';
+			document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+		}
+	 });
+}
+
+document.addEventListener('DOMContentLoaded', loaded, false);
+</script>
+-->
+</html>

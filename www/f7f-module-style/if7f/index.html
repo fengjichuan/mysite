@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+    社区广播
+</title>
+
+
+<link href="http://s1.f7f.com/template/default/css/global.css?v=201206262043" rel="stylesheet" type="text/css"  />
+
+<link href="http://s1.f7f.com/template/default/css/gb.css?v=201206262043" rel="stylesheet" type="text/css" />
+
+<link href="inettuts.css" rel="stylesheet" type="text/css" />
+<link href="inettuts.js.css" rel="stylesheet" type="text/css" />
+
+<style>
+	.f7f-nettuts{
+		clear: both;
+		padding: 10px 0;
+	}
+	
+	
+	.if7f-shadow-layer{
+		background-color: #000;
+		display: none;
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: 999;
+		width: 100%;
+	}
+	.if7f-option-layer{
+		width: 100%;
+		height: 300px;
+		position: absolute;
+		left: 0px;
+		top: 120px;
+		z-index: 9999;
+		text-align: center;
+		display: none;
+	}
+	.if7f-option-layer .option-area{
+		width:500px;
+		height:200px;
+		padding: 5px 8px;
+		border:3px solid #9a9a9a;
+		margin:0px auto;
+		text-align:left;
+		background-color:white;
+		border-radius: 5px;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		box-shadow: 0px 3px 20px #fff;
+		-webkit-box-shadow: 0px 3px 20px #fff;
+		-moz-box-shadow: 0px 3px 20px #fff;
+	}
+	
+	.if7f-option-layer .option-area .option-title{
+		height: 30px;
+		border-bottom: 1px solid #cecece;
+	}
+	.if7f-option-layer .option-area .option-title span,
+	.if7f-option-layer .option-area .option-title a{
+		float: left;
+		font-size: 14px;
+		font-weight: bold;
+		line-height: 30px;
+		height: 30px;
+		color: #333;
+	}
+	.if7f-option-layer .option-area .option-title a.option-close{
+		float: right;
+	}
+	.if7f-option-layer .option-area .option-title a.option-close:hover{
+		color: #777;
+	}
+	
+	.if7f-option-layer .option-area .option-checkbox{
+		padding: 5px 20px;
+		clear:both;
+	}
+	.if7f-option-layer .option-area .option-checkbox-item{
+		height: 30px;
+		line-height: 30px;
+		width: 150px;
+		float:left;
+		text-indent: 20px;
+	}
+	.if7f-option-layer .option-area .option-checkbox-item span{
+		padding-left:10px;
+	}
+	
+	.if7f-option-layer .option-area .option-button{
+		padding: 20px 40px;
+	}
+	.if7f-option-layer .option-area .option-button input{
+		width: 100px;
+		margin-right: 20px;
+	}
+	
+</style>
+
+<script type="text/javascript" src="http://s1.f7f.com/template/js/lib/jquery-1.7.2.min.js?v=201206262043"></script>
+
+<script type="text/javascript" src="http://s1.f7f.com/template/js/jquery.cookie.js?v=201206262043"></script>
+</head>
+<body>
+<div id="wrapper">
+<!-- 头部 start -->
+  
+<div id="header">
+    <div class="logo"><a href="/home/broadcast"><img src="http://s1.f7f.com/template/default/images/logo.gif" alt="分七份网站" style=""/></a><span class="city">北京</span></div>
+    <div class="topright">
+       <div class="nav">
+        <ul id="nav">
+           <li><a href="/home/broadcast" >社区广播</a></li>
+          <li><a href="/huodong/index" >聚会活动</a></li>
+            <li><a href="/shanghu/index">周边商户</a></li>
+            <li><a href="/home/public">公共服务</a></li>
+        </ul>
+        </div>
+        <div class="search"><input type="text" class="txt txt_default l" id="txtKeys" name="txtKeys" value="社区周边商户、公共服务" />
+        <a href="javascript:void(0);" style=" display:block;width:10px;height:27px; float:right;margin-right:10px;" id="aSearch" name="aSearch" onclick="Search();return false;">&nbsp;</a>
+        </div>
+         <div class="r" style="margin-right:5px;">
+         
+        <ul class="person">
+        	<li class="person_nav" node-type="account" id="account">
+            	<a href="javascript:void(0);" class="link ">帐号<span class="arr_d"><em class="b1"></em><em class="b2"></em><em class="b3"></em></span></a>
+                <div style="display: none;" node-type="layerAccount" class="layer_topmenu_list" id="layerAccount">
+                  <dl class="person_infos">
+                 <dt><a href="/users/6032481.html"><img style="width:50px;height:50px;" src="http://i1.f7f.com/Uploads/Users/20120220/201202201735383893251070013_s.jpeg" alt="stan" title="" /></a></dt>
+                 <dd><a href="/users/6032481.html">stan</a></dd>
+                  </dl>
+                  <ul>
+                 <li class="line"></li>
+                 <li><a href="/set/basic">
+                 <img width="16" height="16" class="ico ico_account" alt="帐号设置" src="http://s1.f7f.com/template/default/images/transparent.gif">
+                 帐号设置</a></li>
+                    <li class="line"></li>
+                    
+                 <li><a href="/home/loginout" >
+                 <img width="16" height="16" class="ico ico_exit" alt="退出" src="http://s1.f7f.com/template/default/images/transparent.gif">
+                 退出</a></li>
+  				</ul>
+  				</div>
+            </li>
+            
+            <li class="person_nav" node-type="notice" id="notice">
+            <a href="javascript:void(0);" class="link">消息<span class="arr_d"><em class="b1"></em><em class="b2"></em><em class="b3"></em></span></a>
+                            <div style="display: none;" node-type="layerNotice" class="layer_topmenu_list" id="layerNotice">
+                  <ul>
+               
+                 <li><a href="javascript:void(0);" onclick="viewRespond(0);return false;" id="top_repsond">查看回应</a></li>
+                 <li class="line"></li>
+                 <li><a href="javascript:void(0);" id="top_msg" onclick="OpenMeg(); return false;">
+                 查看私信</a></li>
+  				</ul>
+  				</div>
+ 
+            </li>
+        	<li class="person_nav_static">
+               <a href="/users/6032481.html" class="link">stan</a>
+             </li>
+        </ul>
+        
+        </div>
+
+    </div>
+	
+</div>
+    <div class="float" id="float">
+        <p id="">
+            <label id="lab_msgnum">0</label>条新私信，<a href="javascript:void(0);" onclick="OpenMeg()">查看私信</a></p>
+    </div>
+<!-- 头部 end -->
+  
+  
+  
+<div class="f7f-nettuts">
+	
+	<div style="height:25px;">
+		<img class="if7f-set" src="img/set.png" style="float:right;margin-right:5px;" />
+	</div>
+	
+	<div id="columns">
+        
+    </div>
+	<div style="clear:both;"></div>
+	
+</div>
+
+<script src="if7f.js"></script>  
+  
+
+<!-- 页脚 start -->
+  
+
+<div id="footer">
+	        		<div class="copyAbout">
+                	<a href="javascript:void(0);">关于分七份</a> |
+                	<a href="http://www.danventure.com/employ.html" target="_blank">工作机会</a> |
+                	<a href="/aboutus/contacts">联系我们</a> 
+                </div>
+                   <p class="friends">
+友情链接：<a target="_blank" href="http://www.danventure.com/">丹拓信息</a>
+<a target="_blank" href="http://www.ttytyw.com/">天天羽毛球网</a>
+</p>
+	
+        		<div class="copyRight">分七份2011  京ICP备<a href="http://www.miibeian.gov.cn">11008581-2</a>号 </div>
+
+</div>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-29030025-1']);
+  _gaq.push(['_setDomainName', 'f7f.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<span style="display:none">
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F33a2b4ad008014979f56e43c49f16d41' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script src="http://s21.cnzz.com/stat.php?id=3330267&web_id=3330267" language="JavaScript"></script>
+</span>
+<!-- 页脚  end -->
+</div>
+
+<script type="text/javascript" src="http://s1.f7f.com/template/js/common.js?v=201206262043"></script>
+<script type="text/javascript" src="http://s1.f7f.com/template/js/s.js?v=201206262043"></script>
+<script type="text/javascript" src="http://s1.f7f.com/template/js/jquery.tips.js?v=201206262043"></script>
+
+<script type="text/javascript">var i = 0;CtrlEnterSendOption = 1;</script>
+<script type="text/javascript" src="http://s1.f7f.com/template/js/ajaxfileupload.js?v=201206262043"></script>
+
+<script type="text/javascript" src="http://s1.f7f.com/template/js/jquery.hotkeys.min.js?v=201206262043"></script>
+<script type="text/javascript" src="http://s1.f7f.com/template/js/users/broadcast.js?v=201206262043"></script>
+<script type="text/javascript" src="http://s1.f7f.com/template/js/lib/jquery.rotate.js?v=201206262043"></script>
+
+
+<script type="text/javascript" src="jquery-ui-personalized-1.6rc2.min.js"></script>
+
+<script src="jquery.ui.touch-punch.js"></script>
+
+<script type="text/javascript" src="inettuts.js"></script>
+
+<script type="text/javascript"> $(function() {SetCurrentNav(n);WinDrop();getSmsNum();});</script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,1 @@
+define("./a",function(require){return{fun1:function(){},fun2:function(){},fun3:function(){}}});var xxxxxx="";define("./b",function(require){return require.async(["./c"],function(e){console.log(e)}),{fun11:function(){var e="abc"},fun22:function(){},fun33:function(){}}});

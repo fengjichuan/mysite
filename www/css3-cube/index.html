@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=1024">
+		<style>
+		#experiment {
+	/*
+      -webkit-perspective: 800;
+      -webkit-perspective-origin: 50% 50px;
+    */
+    }
+    
+    #cube {
+      position: relative;
+      margin: 0 auto;
+      height: 100px;
+      width: 100px;
+      -webkit-transition: -webkit-transform .2s ease-in;
+      -webkit-transform-style: preserve-3d;
+    }
+    
+    .face {
+      position: absolute;
+      height: 100px;
+      width: 100px;
+      border-radius: 10px;
+    }
+    
+    #cube .one  {
+      -webkit-transform: rotateX(90deg) translateZ(50px);
+      background-color: red;
+    }
+
+    #cube .two {
+      -webkit-transform: translateZ(50px);
+      background-color: blue;
+    }
+
+    #cube .three {
+      -webkit-transform: rotateY(90deg) translateZ(50px);
+      background-color: grey;
+    }
+
+    #cube .four {
+      -webkit-transform: rotateY(180deg) translateZ(50px);
+      background-color: yellow;
+    }
+
+    #cube .five {
+      -webkit-transform: rotateY(-90deg) translateZ(50px);
+      background-color: green;
+    }
+
+    #cube .six {
+      -webkit-transform: rotateX(-90deg) translateZ(50px) rotate(180deg);
+      background-color: black;
+    }
+		</style>
+	</head>
+	<body>
+		
+		
+		<div id="experiment">
+        <div id="cube">
+                <div class="face one">
+                        One face
+                </div>
+                <div class="face two">
+                        Up, down, left, right
+                </div>
+                <div class="face three">
+                        Lorem ipsum.
+                </div>
+                <div class="face four">
+                        New forms of navigation are fun.
+                </div>
+                <div class="face five">
+                        Rotating 3D cube
+                </div>
+                <div class="face six">
+                        More content
+                </div>
+        </div>
+</div>
+		
+		
+	</body>
+	
+	<script>
+	function $(id) {
+		return document.getElementById(id);
+	}
+	
+	 	var xAngle = 0, yAngle = 0;
+        document.addEventListener('keydown', function(e)
+        {
+                switch(e.keyCode)
+                {
+
+                        case 37: // left
+                                yAngle -= 90;
+                                break;
+
+                        case 38: // up
+                                xAngle += 90;
+                                break;
+
+                        case 39: // right
+                                yAngle += 90;
+                                break;
+
+                        case 40: // down
+                                xAngle -= 90;
+                                break;
+                };
+
+                $('cube').style.webkitTransform = "rotateX("+xAngle+"deg) rotateY("+yAngle+"deg)";
+        }, false);
+	</script>
+	
+</html>
+
+
