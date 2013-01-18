@@ -1,0 +1,968 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>jQTouch &beta;</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        <link rel="stylesheet" href="../../themes/css/apple.css" title="jQTouch" />
+        <!--
+        <link rel="stylesheet" href="../../themes/css/style.css" />
+		-->
+		
+        <script src="../../src/lib/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+        
+        <!--
+        <script src="../../src/jqtouch.min.js" type="text/javascript" charset="utf-8"></script>
+       -->
+       <script src="../../src/lib/hammer.js"></script>
+       <script src="../../src/lib/jquery.specialevent.hammer.js"></script>
+       
+       <!-- Uncomment the following two lines (and comment out the previous two) to use jQuery instead of Zepto. -->
+       <!--
+        <script src="../../src/lib/jquery-1.7.min.js" type="application/x-javascript" charset="utf-8"></script>
+        <script src="../../src/jqtouch.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../src/jqtouch-jquery.min.js" type="application/x-javascript" charset="utf-8"></script>
+       -->
+       
+        <script src="../../src/lib/iscroll.js"></script>
+        <script src="../../src/lib/swipe.js"></script>
+        <!--
+        <script src="../../src/lib/infiniwall.js"></script>
+		-->
+        <script src="../../extensions/jqt.themeswitcher.min.js" type="application/x-javascript" charset="utf-8"></script>
+
+
+        <script type="text/javascript" charset="utf-8">
+        
+        
+           //  var jQT = new $.jQTouch({});
+            /*
+            $(function() {
+            	$('#main-page').bind('pageAnimationStart', function(e, info){ 
+                	// console.log('animate start', e, info);
+                }).bind('pageAnimationEnd', function(e, info){
+                    // console.log('animate end', e, info);
+                	// alert('end');
+                });
+            });
+        */    
+            
+        </script>
+      
+        <script type="text/javascript">
+
+var myScroll,
+	pullDownEl, pullDownOffset,
+	pullUpEl, pullUpOffset,
+	generatedCount = 0,
+	myScroll2;
+	
+var LIST = [];
+
+var contentHeight = 0;
+
+var listView = null;
+	
+// main-one页面的假数据	
+var elelist = ['<li><a href="#">'
+				+'<div class="item-content">'
+				+'<h1>【嫁入豪门必备神器】谁都抵抗不了的华美早餐</h1>'
+				+'<p class="item-info1">分七份 2013-01-10 16:40</p>'
+				// +'<p class="item-img">'
+				// +'<img src="../../themes/img/apple/item-1.jpg" />'
+				+'<div class="bg-img1 img-item"></div>'
+				// +'</p>'
+				+'<p class="item-txt">千百年来，嫁入豪门都是很多平民女子的终极梦想。南瓜马车，水晶鞋，华丽的衣装~是多少女生最瑰丽的梦想。可嫁入豪门可没那么简单。能嫁入豪门的女子</p>'
+				+'<p class="item-info2">天通苑  |  晒单点评   1人喜欢</p>'
+				+'</div>'
+				+'</a>'
+				+'<div class="bg-ld"></div>'
+				+'</li>',
+				
+				'<li>'
+				+'<a href="#">'
+				+'<div class="item-content">'
+				+'<h1>天通苑南立水桥球立方超低价打台球，19.9元畅打两小时！</h1>'
+				+'<p class="item-info1">分七份 2013-01-10 15:39</p>'
+				// +'<p class="item-img">'
+				// +'<img src="../../themes/img/apple/item-2.jpg" />'
+				+'<div class="bg-img2 img-item"></div>'
+				// +'</p>'
+				+'<p class="item-txt">球立方就在5号线立水桥站A出口对面，刚开张半年多，里边设施非常好，除了打球外，还有棋牌娱乐室和卡座，提供简餐、咖啡和其他饮料。球厅棋牌室卡座</p>'
+				+'<p class="item-info2">天通苑  |  团购导航   0人喜欢</p>'
+				+'</div>'
+				+'</a>'
+				+'<div class="bg-ld"></div>'
+				+'</li>',
+				
+				'<li>'
+				+'<a href="#">'
+				+'<div class="item-content">'
+				+'<h1>18元看6D电影，天通苑华联沃大富有电影院</h1>'
+				+'<p class="item-info1">分七份 2013-01-10 14:12</p>'
+				// +'<p class="item-img">'
+				+'<div class="bg-img3 img-item"></div>'
+				// +'<img src="../../themes/img/apple/item-3.jpg" />'
+				// +'</p>'
+				+'<p class="item-txt">沃大富有动感立体影院拥有专业的6D影院银幕结构、偏振光眼镜、特技座椅、数字音响系统等高科技产品，给予人们真正的艺术享受和视觉大餐。影院主题突</p>'
+				+'<p class="item-info2">天通苑  |  团购导航   0人喜欢</p>'
+				+'</div>'
+				+'</a>'
+				+'<div class="bg-ld"></div>'
+				+'</li>'];
+	
+
+// 每条feed的元素数据
+var infotmpl = '<h1>北京大雾，教你选购真正有用的口罩和空气净化器</h1>'
+				+'<p>'
+				+'北京大雾持续第五天，虽然有零星小雪飘下，但我们不能确定这天气什么时候能恢复正常。这两天，室外也的确看到有人戴了口罩，可真相是戴了口罩不一定能抵抗PM2.5，很可能只是你给了自己一个心理安慰罢了。那我们呀对付PM2.5，到底应该怎样选购口罩以及室内用的空气净化器呢？'
+        		+'</p>'
+        		+'<p>'
+        		+'很多人以为戴上口罩就万事大吉了，其实真相是，普通的面纱口罩只能防尘，要对付PM2.5，必须选用专业的医学口罩。医学口罩又主要分为三类，分别是医学防护口罩、外科口罩、N95、N99口罩。这三类口罩的结构有三层，最外层是防溅，中间是过滤，最内层是防潮。其中，医学防护口罩和外科口罩主要是医院使用，而我们要防PM2.5，一般选用N95和N99。'
+    			+'这两天，很多商家打出了这样的广告词“能99%防范PM2.5颗粒”，这是不可信的。因为PM2.5是非常细的颗粒，目前市民使用的口罩多数不能确保百分之百和脸部完全密合，哪怕有一点儿空隙就无法阻止PM2.5颗粒。就算是现在最热销的N95，其功效也不能达到99%。而且，经过多人实验后，大家都表示，戴N95口罩时间长了之后，会憋得难受，因为这种口罩透气性不是太理想。'
+    			+'对抗PM2.5颗粒最好的办法就是尽量少呆在室外，尤其是本身就有呼吸系统疾病、容易过敏的人群、抵抗力较弱的老年人和儿童，以及心肺疾病患者等易感人群，要特别注意防护。如果有一定原因要外出，请佩戴N95口罩（过滤部分PM2.5）或者厚的棉质口罩（保暖），并尽量减少停留在室外的时间。'
+    			+'</p>'
+    			+'<div class="img-wp">'
+        		+'<img src="../../themes/img/apple/item-1s.jpg" />'
+        		+'</div>'
+        		+'<p>'
+        		+'第一类是被动吸附过滤式净化器，是这种空气净化器的工作原理是过滤。这种空气净化器一般是采用HEPA滤网+性炭+光触媒（冷触媒、多远触媒）+紫外线杀菌消毒+静电吸附滤网。是用风机将空气抽入机器，通过内置的HEPA滤网过滤掉空气内的粉尘，活性炭去异味，紫外线灯起到消毒作用。市场上的过滤器有紫外线、静电、光触媒等各种标签，其工作原理是一致的。'
+    			+'第二类是主动式空气净化器。这种净化器主要是自动放出负离子和臭氧等杀菌和净化空气的成分，这些成分是对人体有益的，但是不能滤掉空气中颗粒物。'
+        		+'</p>'
+        		+'<div class="img-wp">'
+        		// +'<img src="../../themes/img/apple/item-1s.jpg" />'
+        		+'</div>'
+        		+'<p>'
+        		+'第一类是被动吸附过滤式净化器，是这种空气净化器的工作原理是过滤。这种空气净化器一般是采用HEPA滤网+性炭+光触媒（冷触媒、多远触媒）+紫外线杀菌消毒+静电吸附滤网。是用风机将空气抽入机器，通过内置的HEPA滤网过滤掉空气内的粉尘，活性炭去异味，紫外线灯起到消毒作用。市场上的过滤器有紫外线、静电、光触媒等各种标签，其工作原理是一致的。'
+    			+'第二类是主动式空气净化器。这种净化器主要是自动放出负离子和臭氧等杀菌和净化空气的成分，这些成分是对人体有益的，但是不能滤掉空气中颗粒物。'
+        		+'</p>'
+        		+'<div class="img-wp">'
+        		// +'<img src="../../themes/img/apple/item-1s.jpg" />'
+        		+'</div>';
+        		
+        		
+// 滑动滚动图片数据        		
+var imglist = '<div>'
+				+'<div style="display:block;"><img src="../../themes/img/apple/item-3s.jpg" /></div>'
+               	+'<div style="display:none;"><img src="../../themes/img/apple/item-2s.jpg" /></div>'
+               	+'<div style="display:none;"><img src="../../themes/img/apple/item-3s.jpg" /></div>'
+                +'</div>';
+                
+                
+                
+// main-two页面假数据
+var pagetwolist = '<li><h1>北京大雾，教你选购真正有用的口罩和空气净化器</h1><p>很多人以为戴上口罩就万事大吉了，其实真相是，普通的面纱口罩只能防尘，</p></li>'
+				+'<li><h1>第一类是被动吸附过滤式净化器</h1><p>这种空气净化器一般是采用HEPA滤网+性炭+光触媒（冷触媒、多远触媒）+紫外线杀菌消毒+静电吸附滤网。</p></li>';
+
+
+function pullDownAction () {
+	setTimeout(function () {	// <-- Simulate network congestion, remove setTimeout from production!
+		var el, li, i;
+		el = document.getElementById('thelist');
+		++generatedCount;
+		/*
+		for (i=0; i<3; i++) {
+			li = document.createElement('li');
+			li.innerText = 'Generated row ' + (++generatedCount);
+			el.insertBefore(li, el.childNodes[0]);
+		}
+		*/
+		var ee = $(elelist[generatedCount%3]).addClass('ld');
+		var tl = $('#thelist');
+		// var bb = $('.bottom-blank');
+		// var lst = tl.find('li:last');
+		// var fst = tl.find('li:first');
+		// var oh = bb.height();
+		// fst.before(ee);
+		tl.prepend(ee);
+		
+		// var h = lst.outerHeight();
+		// bb.height(oh+h);
+		// lst.remove();
+		
+		setTimeout(function() {
+			ee.addClass('ld2');
+			insertTop(ee);
+		}, 10);
+		
+		myScroll.refresh();		// Remember to refresh when contents are loaded (ie: on ajax completion)
+	}, 1000);	// <-- Simulate network congestion, remove setTimeout from production!
+}
+
+function pullUpAction () {
+	setTimeout(function () {	// <-- Simulate network congestion, remove setTimeout from production!
+		var el, li, i;
+		el = document.getElementById('thelist');
+		++generatedCount;
+		/*
+		for (i=0; i<3; i++) {
+			li = document.createElement('li');
+			li.innerText = 'Generated row ' + (++generatedCount);
+			el.appendChild(li, el.childNodes[0]);
+		}
+		*/
+		var ee = $(elelist[generatedCount%3]).addClass('ld');
+		var tl = $('#thelist');
+		// var tb = $('.top-blank');
+		// var lst = tl.find('li:last');
+		// var fst = tl.find('li:first');
+		// var oh = tb.height();
+		// lst.after(ee);
+		// var h = fst.outerHeight();
+		// tb.height(oh + h);
+		// fst.remove();
+		tl.append(ee);
+		
+		setTimeout(function() {
+			ee.addClass('ld2');
+			insertBottom(ee);
+		}, 10);
+		
+		myScroll.refresh();		// Remember to refresh when contents are loaded (ie: on ajax completion)
+	}, 1000);	// <-- Simulate network congestion, remove setTimeout from production!
+}
+
+var ST = 0;
+
+function loaded() {
+	// myScroll = new iScroll('wrapper11');
+	
+	pullDownEl = document.getElementById('pullDown');
+	pullDownOffset = pullDownEl.offsetHeight;
+	pullUpEl = document.getElementById('pullUp');	
+	pullUpOffset = pullUpEl.offsetHeight;
+	
+	myScroll = new iScroll('wrapper11', {
+		useTransition: true,
+		topOffset: pullDownOffset,
+		onRefresh: function () {
+			
+			if (pullDownEl.className.match('loading')) {
+				pullDownEl.className = '';
+				pullDownEl.querySelector('.pullDownLabel').innerHTML = 'Pull down to refresh...';
+			} else 
+			
+			if (pullUpEl.className.match('loading')) {
+				pullUpEl.className = '';
+				pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Pull up to load more...';
+			}
+		},
+		onScrollStart: function() {
+			// ST = this.y;
+			// listCache(this.y);
+		},
+		
+		onScrollMove: function () {
+			/*
+			if(Math.abs(this.y - ST) > 500) {
+				listCache(this.y);
+				ST = this.y;
+				
+				console.log('scrolling....')
+			}
+			*/
+			if (this.y > 5 && !pullDownEl.className.match('flip')) {
+				pullDownEl.className = 'flip';
+				pullDownEl.querySelector('.pullDownLabel').innerHTML = 'Release to refresh...';
+				this.minScrollY = 0;
+			} else if (this.y < 5 && pullDownEl.className.match('flip')) {
+				pullDownEl.className = '';
+				pullDownEl.querySelector('.pullDownLabel').innerHTML = 'Pull down to refresh...';
+				this.minScrollY = -pullDownOffset;
+			} else 
+			
+			if (this.y < (this.maxScrollY - 5) && !pullUpEl.className.match('flip')) {
+				pullUpEl.className = 'flip';
+				pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Release to refresh...';
+				this.maxScrollY = this.maxScrollY;
+			} else if (this.y > (this.maxScrollY + 5) && pullUpEl.className.match('flip')) {
+				pullUpEl.className = '';
+				pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Pull up to load more...';
+				this.maxScrollY = pullUpOffset;
+			}
+			
+			
+		},
+		onScrollEnd: function () {
+			
+			// console.log(this);
+			
+			if (pullDownEl.className.match('flip')) {
+				pullDownEl.className = 'loading';
+				pullDownEl.querySelector('.pullDownLabel').innerHTML = 'Loading...';				
+				pullDownAction();	// Execute custom function (ajax call?)
+			} else 
+			if (pullUpEl.className.match('flip')) {
+				pullUpEl.className = 'loading';
+				pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Loading...';				
+				pullUpAction();	// Execute custom function (ajax call?)
+			}
+			
+			
+			listCache(this.y);
+			
+			this.refresh();
+			
+		}
+	});
+	
+
+	// setTimeout(function () { document.getElementById('wrapper11').style.left = '0'; }, 800);
+}
+
+
+function listCache(scrollY) {
+	var dis = 2;
+	var th = 0, els = [], bh = 0,
+				_y = Math.abs(scrollY),
+				ch = contentHeight,
+				_ind = 0;
+			$(LIST).each(function(index, item) {
+				// item.el.remove();
+				
+				var y = item.y;
+				if(els.length > 0) return;
+				if( (y > _y && y < (_y+ch)) || (y<_y && y>(_y-ch*2)) ) {
+					_ind = index;
+				}
+			});
+			var start = (_ind-dis) < 0 ? (function() {
+				th = 0;
+				return 0;
+			})() : (function(i) {
+				for(var j=0;j<i;j++) {
+					th += LIST[j].h;
+					LIST[j].el.addClass('item-hidden');
+					// LIST[j].el.children('a').hide();
+				}
+				return i;
+			})(_ind-dis);
+			var end = (_ind+dis) > LIST.length ? (function() {
+				bh = 0;
+				return LIST.length;
+			})() : (function(i) {
+				for(var j=i,len=LIST.length;j<len;j++) {
+					bh += LIST[j].h;
+					LIST[j].el.addClass('item-hidden');
+					// LIST[j].el.children('a').hide();
+				}
+				return i;
+			})(_ind+dis);
+			
+			for(var i=start;i<end;i++) {
+				// $('.top-blank').after(LIST[i].el);
+				LIST[i].el.removeClass('item-hidden');
+				// LIST[i].el.children('a').show();
+			}
+			// $('.top-blank').height(th);
+			// $('.bottom-blank').height(bh);
+}
+
+
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+
+
+var Slider = null;
+
+document.addEventListener('DOMContentLoaded', function () {
+	
+	// var $el = $('#thelist');
+	// listView = new infinity.ListView($el);
+	
+	// var slider4 = new Swipe(document.getElementById('slider4'));
+	
+	contentHeight = $('#wrapper11').height();
+	
+	var _content = $('#thelist');
+	var _content2 = $('#thelist2');
+	
+	var _t = 0;
+	
+	
+	for(var i=0;i<10;i++) {
+		var el = $(elelist[0]);
+		// $('.bottom-blank').before(el);
+		_content.append(el);
+		// insertBottom(el);
+		var h = el.height();
+			// _h = el.height();
+		LIST.push({
+			el: el,
+			h: h,
+			y: _t
+		});
+		_t += h;
+	}
+	
+	var __hl = [];
+	for(var i=0;i<10;i++) {
+		__hl.push(pagetwolist);
+	}
+	_content2.html(__hl.join(''));
+	
+	
+	
+	loaded();
+	
+	var infoS = null;
+	
+	var infoEl = $('#page-content-inner');
+	
+	var _pageone = $('#page-one');
+	
+	var _imgshow = $('#img-show');
+	
+	_content.delegate('a', 'tap click', function(e) {
+		e.stopPropagation();
+		e.preventDefault();
+		showDesInfo();
+	});
+	
+	_content2.delegate('li', 'tap click', function() {
+		showDesInfo();
+	});
+	
+	$('.bk-main').on('tap click', function(e) {
+		e.stopPropagation();
+		e.preventDefault();
+		hideDesInfo();
+	});
+	
+	// 每个主页面点击item的时候响应的事件
+	function showDesInfo() {
+		_pageone.unbind('webkitTransitionEnd');
+		_pageone.show().addClass('curt');
+		infoEl.html(infotmpl);
+		if(infoS) infoS.destroy();
+		infoS = new iScroll('page-content', {
+			useTransition: true
+		});
+	}
+	
+	// 关闭每个主页面的子页面
+	function hideDesInfo() {
+		if(infoS) infoS.destroy();
+		_pageone.removeClass('curt');
+		_pageone.bind('webkitTransitionEnd', function(e) {
+			infoEl.html('');
+		});
+	}
+	
+	_pageone.delegate('#page-content img', 'tap click', function(e) {
+		/*
+		infoEl.find('img').each(function(index, item) {
+			if(index == 0) {
+				_st = 'display:block;';
+			} else {
+				_st = 'display:none;';
+			}
+			var _d = document.createElement('div');
+			_d.setAttribute('style', _st);
+			_d.appendChild(item);
+			_html.appendChild(_d);
+			// _html.push('<div style="'+ _st +'">'+ $(item).html() +'</div>');
+			
+		});
+		*/
+		// console.log(_html);
+		// _imgshow.html('<div>'+ _html.join('') +'</div>')
+		// _imgshow[0].appendChild(_html);
+		// console.log(_imgshow[0]);
+		_imgshow.show().addClass('curt').html(imglist);
+		Slider = new Swipe(_imgshow[0]);
+		// infoEl.hide();
+	}).delegate('#img-show', 'tap click', function(e) {
+		_imgshow.html('').removeClass('curt');
+		// infoEl.show();
+	});
+	
+	/*
+	_imgshow.bind('webkitTransitionEnd', function(e) {
+		if(_imgshow.html() == '') {
+			_imgshow.html(imglist);
+			Slider = new Swipe(_imgshow[0]);
+		} else {
+			_imgshow.html('');
+		}
+	});
+	*/
+	
+	
+	
+	
+	
+	// 底部操作栏的事件绑定
+	var _optbt1 = $('.bt-list .opt1'),
+		_optbt2 = $('.bt-list .opt2'),
+		_optbt3 = $('.bt-list .opt3'),
+		_optbt4 = $('.bt-list .opt4'),
+		_optbt5 = $('.bt-list .opt5'),
+		_mainone = $('#main-one'),
+		_maintwo = $('#main-two'),
+		_mainthree = $('#main-three'),
+		_mainfour = $('#main-four'),
+		_mainfive = $('#main-five');
+	
+	_currentmain = _mainone;
+	
+	_optbt1.bind('tap', function(e) {
+		e.stopPropagation();
+		e.preventDefault();
+		showMain(_mainone);
+	});
+	_optbt2.bind('tap', function(e) {
+		e.stopPropagation();
+		e.preventDefault();
+		showMain(_maintwo);
+		if(!myScroll2) {
+			myScroll2 = new iScroll('wrapper22', {
+				useTransition: true
+			});
+		}
+	});
+	_optbt3.bind('tap', function(e) {
+		e.stopPropagation();
+		e.preventDefault();
+		showMain(_mainthree);
+	});
+	_optbt4.bind('tap', function(e) {
+		e.stopPropagation();
+		e.preventDefault();
+		showMain(_mainfour);
+	});
+	_optbt5.bind('tap', function(e) {
+		e.stopPropagation();
+		e.preventDefault();
+		showMain(_mainfive);
+	});
+	
+	function showMain(el) {
+		if(el == _currentmain) return;
+		el.show();
+		_currentmain.hide();
+		_currentmain = el;
+	}
+	
+}, false);
+
+
+// 向后插入
+function insertBottom(el) {
+	var item = LIST[LIST.length-1],
+		rel = item.el,
+		h = rel.height(),
+		y = item.y;
+		// _h = el.height();
+	// console.log(rel.height(), rel.width())
+	LIST.push({
+		el: el,
+		y: y + h,
+		h: el.height()
+	});
+}
+
+// 向前插入
+function insertTop(el) {
+	var item = LIST[0],
+		rel = item.el,
+		y = item.y,
+		h = el.height(),
+		// _h = el.height(),
+		_item;
+	for(var i=0,len=LIST.length;i<len;i++) {
+		_item = LIST[i];
+		_item.y += h;
+	}
+	LIST.unshift({
+		el: el,
+		y: y,
+		h: h
+	});
+}
+
+</script>
+
+<style type="text/css" media="all">
+body,ul,li {
+	padding:0;
+	margin:0;
+	border:0;
+}
+
+body {
+	font-size:12px;
+	-webkit-user-select:none;
+    -webkit-text-size-adjust:none;
+	font-family:helvetica;
+}
+
+#header {
+	position:absolute; z-index:2;
+	top:0; left:0;
+	width:100%;
+	height:45px;
+	line-height:45px;
+	background-color: #f83e13;
+	/*
+	background-color:#d51875;
+	background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #fe96c9), color-stop(0.05, #d51875), color-stop(1, #7b0a2e));
+	background-image:-moz-linear-gradient(top, #fe96c9, #d51875 5%, #7b0a2e);
+	background-image:-o-linear-gradient(top, #fe96c9, #d51875 5%, #7b0a2e);
+	*/
+	padding:0;
+	color:#eee;
+	font-size:20px;
+	text-align:center;
+	
+	-webkit-box-shadow: 1px 2px 5px rgba(0,0,0,0.5);
+}
+
+#header a {
+	color:#f3f3f3;
+	text-decoration:none;
+	font-weight:bold;
+	text-shadow:0 -1px 0 rgba(0,0,0,0.5);
+}
+
+#footer {
+	position:absolute; z-index:2;
+	bottom:0; left:0;
+	width:100%;
+	height:48px;
+	background-color:#222;
+	/*
+	background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #999), color-stop(0.02, #666), color-stop(1, #222));
+	background-image:-moz-linear-gradient(top, #999, #666 2%, #222);
+	background-image:-o-linear-gradient(top, #999, #666 2%, #222);
+	*/
+	
+	background-color: -webkit-linear-gradient(rgba(255, 255, 255, 0.15),rgba(255, 255, 255, 0)), -webkit-linear-gradient(top, #92A3B9,#7F93AD 50%,#768BA7 51%,#6D83A1);
+	padding:0;
+	border-top:1px solid #444;
+}
+
+#wrapper11, #wrapper22{
+	position:absolute; z-index:1;
+	top:45px; bottom:0;
+	/*
+	left:-9999px;
+	*/
+	left: 0;
+	width:100%;
+	background:#aaa;
+	overflow:auto;
+	
+	
+	/*
+	-webkit-animation-name:loading;
+	-webkit-animation-duration:2s;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-timing-function:linear;
+	*/
+}
+
+#scroller {
+	position:absolute; z-index:3;
+/*	-webkit-touch-callout:none;*/
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+	width:100%;
+	padding:0;
+}
+
+#scroller ul {
+	list-style:none;
+	padding:0;
+	margin:0;
+	width:100%;
+	text-align:left;
+}
+
+#scroller li {
+	line-height:40px;
+	border-bottom:1px dashed #9a9a9a;
+	border-top:1px solid #fff;
+	background-color:#fafafa;
+	font-size:14px;
+	
+	-webkit-backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition-duration: 0.4s;
+    -webkit-transition-property: all;
+    -webkit-transition-timing-function: ease-in;
+	
+}
+#scroller ul#thelist li.ld{
+	opacity: 0;
+}
+#scroller ul#thelist li.ld2{
+	opacity: 1;
+}
+
+#myFrame {
+	position:absolute;
+	top:0; left:0;
+}
+
+
+.item-hidden{
+	
+}
+
+.img-item{
+	-webkit-backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition-duration: 0.4s;
+    -webkit-transition-property: all;
+    -webkit-transition-timing-function: ease-in;
+}
+.item-hidden .img-item{
+	visibility: hidden;
+	opacity: 0;
+}
+
+
+
+
+
+
+
+/*
+.bg-loading a{
+	visibility: hidden;
+}
+
+
+.bg-ld{
+	display:none;
+	position: absolute;
+	z-index: 999;
+	left: 112px;
+	top: 120px;
+	width: 80px;
+	height: 80px;
+	margin: auto;
+	background:url(../../themes/img/apple/loading1.gif) center no-repeat;
+	-webkit-animation-name:loading;
+	-webkit-animation-duration:2s;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-timing-function:linear;
+}
+
+.bg-loading .bg-ld{
+	display: block;
+}
+*/
+
+
+/**
+ *
+ * Pull down styles
+ *
+ */
+#pullDown, #pullUp {
+	background:#fff;
+	height:40px;
+	line-height:40px;
+	padding:5px 10px;
+	border-bottom:1px solid #ccc;
+	font-weight:bold;
+	font-size:14px;
+	color:#888;
+}
+#pullDown .pullDownIcon, #pullUp .pullUpIcon  {
+	display:block; float:left;
+	width:40px; height:40px;
+	background:url(../../themes/img/apple/pull-icon@2x.png) 0 0 no-repeat;
+	-webkit-background-size:40px 80px; background-size:40px 80px;
+	-webkit-transition-property:-webkit-transform;
+	-webkit-transition-duration:250ms;	
+}
+#pullDown .pullDownIcon {
+	-webkit-transform:rotate(0deg) translateZ(0);
+}
+#pullUp .pullUpIcon  {
+	-webkit-transform:rotate(-180deg) translateZ(0);
+}
+
+#pullDown.flip .pullDownIcon {
+	-webkit-transform:rotate(-180deg) translateZ(0);
+}
+
+#pullUp.flip .pullUpIcon {
+	-webkit-transform:rotate(0deg) translateZ(0);
+}
+
+#pullDown.loading .pullDownIcon, #pullUp.loading .pullUpIcon {
+	background-position:0 100%;
+	-webkit-transform:rotate(0deg) translateZ(0);
+	-webkit-transition-duration:0ms;
+
+	-webkit-animation-name:loading;
+	-webkit-animation-duration:2s;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-timing-function:linear;
+}
+
+@-webkit-keyframes loading {
+	from { -webkit-transform:rotate(0deg) translateZ(0); }
+	to { -webkit-transform:rotate(360deg) translateZ(0); }
+}
+
+.top-blank, .bottom-blank{
+	height: 0px;
+}
+
+</style>
+        
+        <style type="text/css" media="screen">
+            #jqt.fullscreen #home .info {
+                display: none;
+            }
+            div#jqt #about {
+                padding: 100px 10px 40px;
+                text-shadow: rgba(0, 0, 0, 0.3) 0px -1px 0;
+                color: #999;
+                font-size: 13px;
+                text-align: center;
+                background: #161618;
+            }
+            div#jqt #about p {
+                margin-bottom: 8px;
+            }
+            div#jqt #about a {
+                color: #fff;
+                font-weight: bold;
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+
+    	
+<div id="jqt">
+         
+            <div id="main-page">
+            	
+ <div id="main-one">
+            	
+ <div id="header">分七份小区精品</div>
+               
+               <div id="wrapper11">
+	<div id="scroller">
+		
+		
+
+
+		
+<div class="main-content">
+		
+		<div id="pullDown">
+			<span class="pullDownIcon"></span><span class="pullDownLabel">Pull down to refresh...</span>
+		</div>
+
+<!--	
+		<div id='slider4' class='swipe'>
+  <div>
+    <div style='display:block;'><div class="item"><img src="../../themes/img/apple/h1.jpeg" /></div></div>
+    <div style='display:none;'><div class="item"><img src="../../themes/img/apple/h2.jpeg" /></div></div>
+    <div style='display:none;'><div class="item"><img src="../../themes/img/apple/h3.jpeg" /></div></div>
+    <div style='display:none;'><div class="item"><img src="../../themes/img/apple/h4.jpeg" /></div></div>
+    <div style='display:none;'><div class="item"><img src="../../themes/img/apple/h5.jpeg" /></div></div>
+  </div>
+</div>
+-->	
+		
+
+		<ul id="thelist">
+			
+		</ul>
+		
+		
+		<div id="pullUp">
+			<span class="pullUpIcon"></span><span class="pullUpLabel">向上拉载入更多</span>
+		</div>
+		
+		
+		</div>
+		
+		
+	</div>
+</div>
+           </div>     
+            
+            
+<div id="main-two" style="display:none;">
+	<div id="header">分七份小区新闻</div>
+	
+	<div id="wrapper22">
+		<div id="scroller">
+			<div class="main-content">
+				<ul id="thelist2">
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+</div>
+<div id="main-three" style="display:none;">
+	<div id="header">分七份小区服务</div>
+</div>
+<div id="main-four" style="display:none;">
+	<div id="header">更多...</div>
+</div>
+            
+            
+            <div class="footer">
+                	<div class="bt-list">
+                		<div class="opt opt1">
+                			<span class="icon1"></span>
+                			<span class="txt">精品</span>
+                		</div>
+                		<div class="opt opt2">
+                			<span class="icon1"></span>
+                			<span class="txt">新闻</span>
+                		</div>
+                		<div class="opt opt3">
+                			<span class="icon1"></span>
+                			<span class="txt">服务</span>
+                		</div>
+                		
+                		<div class="opt opt4">
+                			<span class="icon1"></span>
+                			<span class="txt">更多</span>
+                		</div>
+                	</div>
+                </div>
+            
+            
+            </div>
+  
+        
+        	<div id="page-one" style="display:none;">
+        		<!-- 详细信息的内容层 -->
+        		<div id="page-content">
+        			<div id="page-content-scroller">
+        				<div id="page-content-inner">
+        					
+        				</div>
+        			</div>
+        		</div>
+        		<!-- 详细信息内容层 end -->
+                <div id="page-bar">
+                	<a href="#" class="bk-main"> 返回 </a>
+                </div>
+                
+                <div id="img-show"></div>
+                
+            </div>
+        
+        </div>
+   
+    </body>
+</html>
+
+
+

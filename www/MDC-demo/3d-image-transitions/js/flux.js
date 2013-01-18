@@ -19,8 +19,8 @@ window.flux = {
 
 		if(!flux.browser.supportsTransitions)
 		{
-			if(window.console && window.console.error)
-				console.error("Flux Slider requires a browser that supports CSS3 transitions");
+			// if(window.console && window.console.error)
+			// 	console.error("Flux Slider requires a browser that supports CSS3 transitions");
 		}
 
 		var _this = this;
@@ -395,9 +395,9 @@ window.flux = {
 				// If an invalid transition has been provided then use the fallback (default is to just switch the image)
 				tran = new flux.transition(this, {fallback: true});
 			}
-
-	        tran.run();
 			
+	        tran.run();
+	        
 	        this.currentImageIndex = this.nextImageIndex;
 	        this.setNextIndex(this.currentImageIndex+1);
 			this.updateCaption();
@@ -626,18 +626,18 @@ window.flux = {
 		hasFinished: false, // This is a lock to ensure that the fluxTransitionEnd event is only fired once per tansition
 		run: function() {
 			var _this = this;
-
+			
 			// do something
 			if(this.options.setup !== undefined)
 				this.options.setup.call(this);
-			
+				
 			// Remove the background image from the top image
 			this.slider.image1.css({
 				'background-image': 'none'
 			});
-
+			
 			this.slider.imageContainer.css('overflow', this.options.requires3d ? 'visible' : 'hidden');
-
+			
 			// For some of the 3D effects using Zepto we need to delay the transitions for some reason
 			setTimeout(function(){
 				if(_this.options.execute !== undefined)
@@ -1465,7 +1465,7 @@ window.flux = {
 				}).css3({
 					'backface-visibility': 'hidden'
 				});
-
+				
 				this.slideContainer = $('<div class="slide"></div>').css({
 					width: (2*width)+'px',
 					height: height+'px',
