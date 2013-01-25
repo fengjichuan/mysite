@@ -1,0 +1,140 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=GB2312">
+	<title>XOXCO :: DragSwipe.js</title>
+	<meta name="viewport" content="width=device-width,maximum-scale=1.0,user-scalable=no">
+
+	<script src="XOXCO%20_%20DragSwipe.js_files/zepto_002.js"></script>
+	<script src="XOXCO%20_%20DragSwipe.js_files/hammer.js"></script>
+	<script src="XOXCO%20_%20DragSwipe.js_files/zepto.js"></script>
+	<script src="XOXCO%20_%20DragSwipe.js_files/dragswipe.js"></script>
+	<script>
+	
+	
+		Zepto(function() {
+			$('#carousel').dragswipe({width: 320,current_page_element: '#current_page',total_pages_element:'#total_pages'});
+			
+			$('.test1').swipe(function(ev) {
+				console.log('fdsdjjj:', ev.direction);
+			});
+			
+			/*
+			$('#carousel').bind('dragstart', function(ev) {
+				console.log(ev.direction);
+			});
+			*/
+		});
+	</script>
+	
+	<style>
+	
+		body{ background: #CCC; padding:0; margin: 0;}
+		div.carousel_wrapper {
+			width: 320px;
+			height: 160px;
+			overflow: hidden;			
+			background:#000;
+			position:relative;
+
+		}
+		ul.carousel {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			width: 1600px;
+			height: 160px;
+			overflow: hidden;
+			background:#FFF;
+			position:relative;
+		}
+		ul.carousel li {
+			width: 320px;
+			height: 160px;
+			float: left;
+			display:block;
+		}
+		ul.carousel li:nth-child(2n) {
+			background: #369;
+			color: #FFF;
+		}
+
+		ul.carousel li p {
+			margin: 10px;
+		}
+				
+	</style>
+</head>
+<body>
+	
+	<div class="test1" style="width: 300px;height:200px;background-color: #fff;">
+	</div>
+
+	<div class="carousel_wrapper">
+		<ul style="left: 0px;" data-dragswipe-id="0" data-hammer="[object Object]" id="carousel" class="carousel">
+			<li>
+				<p>This is a DragSwipe Carousel.
+				You can swipe it, or drag it slowly.
+				If you drag it enough, it'll snap to the next page.</p>
+			</li>
+			<li>
+				<p>This is the second page of the DragSwipe carousel.
+				There are 5 pages! Keep dragging and/or swiping!</p>
+			</li>
+			<li>
+				<p>DragSwipes are just like normal carousels, but add this touch-friendly behavior.
+				They use CSS transitions to make things look smoooove.</p>
+			</li>
+			<li>
+				<p>There is one more page!</p>
+			</li>
+			<li>
+				<p>When you get to the last page, you can't go any further.  If you try to drag, the page will snap back! Try it!</p>
+			</li>
+		</ul>
+	</div>
+	<a href="#" onclick="$('#carousel').prevPage();">��</a>
+	<div id="pages"><span id="current_page">1</span> / <span id="total_pages">5</span></div>
+	<a href="#" onclick="$('#carousel').nextPage();">��</a>
+
+	<h1>Download DragSwipe</h1>
+
+	<p>Requires <a href="http://eightmedia.github.com/hammer.js/">Hammer.js</a> and jQuery or Zepto.</p>
+
+	<h2>For Zepto:</h2>	
+	<p><a href="http://xoxco.com/projects/code/dragswipe/dragswipe.zepto.js">Download Dragswipe.zepto.js</a></p>
+	<p><a href="http://xoxco.com/projects/code/dragswipe/zepto.hammer.js">Download zepto.hammer.js</a> - a zepto plugin for Hammer.</p>
+	
+	<h2>For jQuery:</h2>
+	<p><a href="http://xoxco.com/projects/code/dragswipe/dragswipe.jquery.js">Download Dragswipe.jquery.js</a></p>
+	
+	<hr>
+	
+	<h1>Configure DragSwipe</h1>
+	
+	<p>Enable a DragSwipe carousel by calling $(el).dragswipe(options). For example:</p>
+	<blockquote>
+				$('#carousel').dragswipe({<br>
+					width: 320,<br>
+					current_page_element: '#current_page',<br>
+					total_pages_element:'#total_pages'<br>
+				});
+	</blockquote>
+	
+	<p>Options are:</p>
+	<ul>
+		<li>width: width of individual carousel element</li>
+		<li>current_page_element: DOM selector for element which should contain current page number</li>
+		<li>total_pages_element: DOM selector for element which should contain total page count</li>
+		<li>turn_threshold: % of page width that must be dragged for snap-to-next-page to trigger.  default to 0.1 or 10%</li>
+	</ul>
+	
+	<p>Useful Methods:</p>
+	
+	<ul>
+		<li>$(el).nextPage() - go to next page</li>
+		<li>$(el).prevPage() - go to previous page</li>
+		<li>$(el).currentPage() - returns current page number</li>
+		<li>$(el).totalPages() - returns number of pages</li>
+		<li>$(el).gotoPage(pageNum) - go to page pageNum</li>
+	</ul>
+
+</body></html>

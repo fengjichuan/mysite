@@ -4,38 +4,330 @@
 		<meta charset="utf-8">
 		<title>Zaker Demo</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		
 		<meta name="apple-mobile-web-app-capable" content="yes">
+		
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link href="./css/style.css" rel="stylesheet" type="text/css" />
 		
+		<script src="http://192.168.1.105:8080/target/target-script-min.js#anonymous"></script>
+		<!--
 		<script src="http://192.168.1.106:8080/target/target-script-min.js#anonymous"></script>
+		-->
 	</head>
 	<body>
-		<!-- 首页启动画面 -->
+		<!-- 首页启动画面(一级页面) -->
 		<div id="main-page">
+			<!-- 启动画面 -->
+			<div class="launch-anim anim">
+			</div>
+			<!-- 启动画面end -->
 			
+			<div class="box box-1">
+				<header>
+					新闻
+				</header>
+				<div class="bg">
+				</div>
+			</div>
+			
+			<div class="box box-2">
+				<header>
+					精品
+				</header>
+				<div class="bg">
+				</div>
+			</div>
+			
+			<div class="box box-3">
+				<header>
+					应用
+				</header>
+				<div class="bg">
+				</div>
+			</div>
+			
+			<div class="box box-4">
+				<header>
+					我的收藏
+				</header>
+				<div class="bg">
+				</div>
+			</div>
+			
+			<div class="box box-5">
+				<header>
+					应用
+				</header>
+				<div class="bg">
+				</div>
+			</div>
+			
+			<div class="set"> 设置 </div>
+			
+			<!-- 主界面 -->
+			<!--
+			<div class="app-pannel">
+				Main Page
+			</div>
+			-->
+			<!-- 主界面end -->
 		</div>
 		<!-- 首页启动画面end -->
 		
-		<!-- 内容页面 -->
-		<div id="page-content">
+		<!-- 内容页面（二级页面） -->
+		<div id="page-content" style="display:none;">
 			<div class="content-wrapper">
-				<div class="item" style="background-color:#333;"> page 00000 </div>
+				<div class="item">
+					
+					<!-- 列表信息 -->
+					<section>
+						<header>
+							<h1>新闻</h1>
+							<div class="hbg"></div>
+						</header>
+						
+						<div class="p-one">
+							<h2>小孩上幼儿园不再难：全面入园攻略</h2>
+							<p>公共信息</p>
+						</div>
+						
+						<div class="p-two">
+						</div>
+						
+						<div class="p-three">
+							<div class="in-de">
+								<div class="c">
+									<h2>沈记靓汤双人套餐128元</h2>
+									<p>团购导航</p>
+								</div>
+							</div>
+						</div>
+						
+						<div class="p-four">
+							<div class="in-de">
+								<div class="c">
+									<h2>超绝iphone防盗招数学起来</h2>
+									<p>公共信息</p>
+								</div>
+							</div>
+						</div>
+						
+						<div class="p-five">
+							<div class="in-de">
+								<div class="c">
+									<h2>金凤成祥金年轮蛋糕仅16元</h2>
+									<p>团购导航</p>
+								</div>
+							</div>
+						</div>
+						
+						<div class="p-six">
+							<div class="in-de">
+								<div class="c">
+									<h2>天通苑帕米拉儿童摄影套餐138</h2>
+									<p>团购导航</p>
+								</div>
+							</div>
+						</div>
+						
+					</section>
+					<!-- 列表信息 -->
+					
+					<div class="opt-bar">
+						<span class="bk"> 返回 </span>
+						
+						<div class="w-page">
+							<div class="cp">
+								5
+							</div>
+						</div>
+						
+						<span class="rf"> 刷新 </span>
+					</div>
+				</div>
 			</div>
 		</div>
 		<!-- 内容页面end -->
 		
-		<!-- 详情页面 -->
-		<div id="info-content">
-			
+		<!-- 详情页面（三级页面） -->
+		<div id="info-content" style="display:none;">
+			<div id="info-wapper" class="ct">
+				<div class="ct-inner">
+					<h1>出租车上被抢劫，摄影师损失10万元！</h1>
+					<p>
+				天通苑的邻居们要留心了！深夜里坐黑出租车非常不安全，有被抢劫的风险！
+    昨天凌晨三点，摄影师S先生在坐机场大巴到三元桥，下大巴车后随手拦了一辆出租车。上车之后，司机将车行驶到大郊亭高架桥上，突然拿出手机给家里打电话，然后说自己的手机停机了，向这位S先生借手机，S也没多想，就直接借给他了。司机在拨电话的时候突然又说，后备箱没关严，要S下车去关。
+    因为是凌晨，S当时特别困，就下车去关后备箱。可S刚下车，关好车门，车竟然突然加速开走了！可S先生的行李、相机、镜头等摄影器材，在外地拍的片子以及司机借机拿到手的手机都没了！据S先生说，这些东西总共价值10万元以上。
+    提醒打车的朋友们，尽量选择正规的出租车，上车前记下车牌号。中途不要随意下车，如果车子出问题，让司机先下车看。如果出现司机借手机之类的情况，可以用“开车不能打电话”来拒绝。多留个心眼儿，尽量避免这样的抢劫行为！
+					</p>
+				</div>
+			</div>
+			<div class="opt-bar2">
+				<span class="bk"> 返回 </span>
+				<span class="lk"> 喜欢 </span>
+				<span class="sr"> 分享 </span>
+				<span class="cm"> 评论 </span>
+				<span class="mr"> 更多 </span>
+			</div>
 		</div>
 		<!-- 详情页面end -->
+		
+		<!-- 二级详情页面（四级页面） -->
+		<div id="info-content2" style="display:none;">
+			<div class="ct">
+				<div class="ct-inner">
+					<header>
+						评论
+					</header>
+					<div class="cm-item">
+						<div class="face">
+							<div class="f"><img src="./images/face1.jpg" /></div>
+						</div>
+						<div class="info">
+							<div class="name"> Jason <span>10分钟前</span></div>
+							<div class="txt"> 北京又变成雾都。。。 </div>
+						</div>
+					</div>
+					
+					<div class="cm-item">
+						<div class="face">
+							<div class="f"><img src="./images/face1.jpg" /></div>
+						</div>
+						<div class="info">
+							<div class="name"> Jason <span>10分钟前</span></div>
+							<div class="txt"> 有外籍教师，还有幼儿瑜伽课程，老师们都很负责，比较让人放心。就是价钱贵了点，要进去也不容易，真是咬紧牙关送孩子去的。 </div>
+						</div>
+					</div>
+					
+					<div class="cm-item">
+						<div class="face">
+							<div class="f"><img src="./images/face1.jpg" /></div>
+						</div>
+						<div class="info">
+							<div class="name"> Jason <span>10分钟前</span></div>
+							<div class="txt"> 人生到处知何似,应似飞鸿踏雪泥。泥上偶然留指爪,鸿飞那复计东西。 </div>
+						</div>
+					</div>
+					
+					<div class="cm-item">
+						<div class="face">
+							<div class="f"><img src="./images/face1.jpg" /></div>
+						</div>
+						<div class="info">
+							<div class="name"> Jason <span>10分钟前</span></div>
+							<div class="txt"> 是一个特靠谱的姐们开的，还经常举办各种活动，和家长互动也非常多。 </div>
+						</div>
+					</div>
+					
+					<div class="cm-item">
+						<div class="face">
+							<div class="f"><img src="./images/face1.jpg" /></div>
+						</div>
+						<div class="info">
+							<div class="name"> Jason <span>10分钟前</span></div>
+							<div class="txt"> 抢票，其实抢的是资源：网速、电脑配置、软件、甚至关系网等等。 </div>
+						</div>
+					</div>
+					
+					<div class="cm-item">
+						<div class="face">
+							<div class="f"><img src="./images/face1.jpg" /></div>
+						</div>
+						<div class="info">
+							<div class="name"> Jason <span>10分钟前</span></div>
+							<div class="txt">  刚想起昨晚做的梦：金鱼在空气中游来游去，有锦鲤，有清道夫，而且游姿和在水里的一样。早上我一直在反问自己：为什么会做这么奇异的梦？？？难道我自己也是一个奇葩！ </div>
+						</div>
+					</div>
+					
+					<div class="cm-item">
+						<div class="face">
+							<div class="f"><img src="./images/face1.jpg" /></div>
+						</div>
+						<div class="info">
+							<div class="name"> Jason <span>10分钟前</span></div>
+							<div class="txt">  5号线之殇，大都市的小悲剧。 </div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="opt-bar2">
+				<span class="bk"> 返回 </span>
+				
+				<span class="rf"> 刷新 </span>
+			</div>
+		</div>
+		<!-- 二级详情页面end -->
+		
+		
+		
+		<!-- 设置页面，包括（用户登录，注册。。。。。） -->
+		<div id="set-content" style="display:none;">
+			
+			<!-- 设置详情页面 -->
+			<div class="set-info show">
+				<div class="ct">
+					<header>
+						设置
+						<div class="done"> OK </div>
+					</header>
+					<div class="ct-inner">
+						<ul>
+							<li class="lg">
+								登录f7f
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- 设置详情页面end -->
+			
+			<!-- 登录页面 -->
+			<div class="login-page hide">
+				<div class="ct">
+					<header>
+						<div class="bk"> 返回 </div>
+						登录
+						<div class="rg"> 注册 </div>
+					</header>
+					<div class="ct-inner">
+						
+					</div>
+				</div>
+			</div>
+			<!-- 登录页面end -->
+			
+			<!-- 注册页面 -->
+			<div class="regist-page hide">
+				<div class="ct">
+					<header>
+						<div class="bk"> 返回 </div>
+						注册
+					</header>
+					<div class="ct-inner">
+						
+					</div>
+				</div>
+			</div>
+			<!-- 注册页面end -->
+			
+		</div>
+		<!--  -->
 	</body>
 	
 	<script src="./js/zepto.js"></script>
+	
+	<!--
 	<script src="./js/hammer.js"></script>
 	<script src="./js/zepto.hammer.js"></script>
+	-->
 	
+	<script src="./js/morf.min.js"></script>
+	
+	<!--
+	<script src="./js/iscroll.js"></script>
+	-->
+		
 	<script src="./js/index.js"></script>
 </html>
 
