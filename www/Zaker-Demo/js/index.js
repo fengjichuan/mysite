@@ -11,11 +11,11 @@ for(var i=0;i<10;i++) {
 	_test.push(i);
 }
 
+
+
 (function($) {
 	var F = {
-		// 初始化的坐标
-		ogappos: [],
-		// 存储首页面app icon的位置坐标
+		// 存储首页面app icon的排列顺序
 		appos: [],
 		// 默认app icon坐标位置
 		defpos: [],
@@ -37,7 +37,7 @@ for(var i=0;i<10;i++) {
 		
 		init: function() {
 			// 初始化启动页面的app icon
-			this.initApp($('#main-page .box'));
+			// this.initApp($('#main-page .box'));
 			
 			this.wapper = $('.content-wrapper');
 			this.current = this.wapper.find('.item').first();
@@ -72,6 +72,17 @@ for(var i=0;i<10;i++) {
 			var infocontent2 = $('#info-content2');
 			// 设置页面的元素对象
 			var setcontent = $('#set-content');
+			// 应用页面元素
+			var pageappc = $('#page-appc');
+			// 操作模块浮动层
+			var optionpage = $('#option-page');
+			// 选择城市，
+			var sel1 = $('#sel-1');
+			// 选择城区，
+			var sel2 = $('#sel-2');
+			// 选择小区
+			var sel3 = $('#sel-3');
+
 			// var _pagecontent = new Hammer(pagecontent[0]);
 			
 			// 内容页面 左滑动
@@ -90,37 +101,26 @@ for(var i=0;i<10;i++) {
 				self.launchAnim(launchbox[0]);
 			});
 			// 首页面启动动画收起事件
-			launchbox.swipeUp(function(e) {
-				launchbox.attr('style', '');
-			});
+			var _first = true,
+				launchanimup = function(e) {
+					launchbox.attr('style', '');
+					if(_first) {
+						_fitst = true;
+						self.initApp(mainpage.find('.box'));
+					}
+				};
+			launchbox.swipeUp(launchanimup);
 			
 			mainpage.on('longTap', '.box', function(e) {
 				self.boxLongTap($(this));
-				/*
-				$(this).addClass('curt');
-				$(this).bind('touchend', function(ev) {
-					$(this).unbind('touchend').unbind('touchmove');
-					$(this).removeClass('curt');
-				}).bind('touchmove', function(ev) {
-					
-				});
-				mainpage.find('.box').each(function(index, item) {
-					$(item).addClass('longtap anim2');
-				});
-				*/
 			});
 			mainpage.on('tap', function(e) {
-				/*
-				mainpage.find('.box').each(function(index, item) {
-					$(item).removeClass('longtap');
-				});
-				*/
 				self.boxLongTapClear();
 			});
 			
 			
 			/*
-			 * tap事件依然可以采用Zepto的语法方式绑定
+			 * 单击新闻模块的动画事件响应
 			 */
 			mainpage.on('tap', '.box-1', function(e) {
 				self.anim(mainpage, function(el) {
@@ -128,27 +128,146 @@ for(var i=0;i<10;i++) {
 					var _t = setTimeout(function() {
 						clearTimeout(_t);
 						_t = null;
-						el.addClass('hide anim2');
-						pagecontent.addClass('show anim2');
+						el[0].className = 'hide anim2';
+						pagecontent[0].className = 'show anim2';
 					}, 0);
 				}, function(el) {
 					el.hide();
 				});
 			});
+			// 由新闻模块返回mainpage
 			pagecontent.on('tap', '.bk', function(e) {
-				self.anim($(this), function(el) {
+				self.anim(pagecontent, function(el) {
 					mainpage.show();
 					var _t = setTimeout(function() {
 						clearTimeout(_t);
 						_t = null;
-						mainpage.removeClass('hide');
-						pagecontent.removeClass('show');
+						mainpage[0].className = 'anim2';
+						el[0].className = 'anim2';
 					}, 0);
 				}, function(el) {
 					el.hide();
-					// self.visb(mainpage);
 				});
 			});
+			
+			
+			/*
+			 * 单击应用模块响应的动画事件
+			 */
+			
+			mainpage.on('tap', '.box-3', function(e) {
+				self.anim(mainpage, function(el) {
+					pageappc.show();
+					var _t = setTimeout(function() {
+						clearTimeout(_t);
+						_t = null;
+						el[0].className = 'hide anim2';
+						pageappc[0].className = 'show anim2';
+					}, 0);
+				}, function(el) {
+					el.hide();
+				});
+			});
+			// 应用列表页面返回到首页面
+			pageappc.on('tap', '.bk', function(e) {
+				self.anim(pageappc, function(el) {
+					mainpage.show();
+					var _t = setTimeout(function() {
+						clearTimeout(_t);
+						_t = null;
+						mainpage[0].className = 'anim2';
+						el[0].className = 'anim2';
+					}, 0);
+				}, function(el) {
+					el.hide();
+				});
+			});
+			
+			
+			
+			/*
+			 * 小区晚报模块的事件响应
+			 */
+			mainpage.on('tap', '.box-5', function(e) {
+				self.anim(optionpage, function(el) {
+					el.show().addClass('show');
+					var _t = setTimeout(function() {
+						clearTimeout(_t);
+						_t = null;
+						sel1[0].className = 'show anim';
+					}, 0);
+				});
+			});
+			optionpage.on('tap', '.bg-layer', function(e) {
+				self.anim(optionpage, function(el) {
+					sel1[0].className = 'anim';
+				}, function(el) {
+					el.hide();
+				});
+			});
+			
+			/*
+			sel1.find('li').each(function(index, item) {
+			
+			var hammer = new Hammer(item);
+			hammer.ontap = function() {
+				self.anim(sel1, function(el) {
+					sel2.show()[0].className = 'hide1';
+					var _t = setTimeout(function() {
+						clearTimeout(_t);
+						_t = null;
+						sel2[0].className = 'show anim';
+						sel1[0].className = 'hide1 anim';
+					}, 0);
+				}, function(el) {
+					sel1.hide();
+				});
+			}
+			
+			});
+			*/
+			
+			
+			/*
+			 * 当用户的行为是move的时候，就不应该再触发 tap 事件了，Zepto.js的bug
+			 */
+			var __flag = false;
+			sel1.find('.ct').on('touchmove', function(e) {
+				__flag = true;
+			});
+			sel1.on('tap', 'li', function(e) {
+				if(__flag) {
+					__flag = false;
+					return;
+				}
+				self.anim(sel1, function(el) {
+					sel2.show()[0].className = 'hide1';
+					var _t = setTimeout(function() {
+						clearTimeout(_t);
+						_t = null;
+						sel2[0].className = 'show anim';
+						sel1[0].className = 'hide1 anim';
+					}, 0);
+				}, function(el) {
+					sel1.hide();
+				});
+			});
+			
+			
+			sel2.on('tap', '.bk', function(e) {
+				self.anim(sel2, function(el) {
+					sel1.show();
+					var _t = setTimeout(function() {
+						clearTimeout(_t);
+						_t = null;
+						sel1[0].className = 'show anim';
+						sel2[0].className = 'hide1 anim';
+					}, 0);
+				}, function(el) {
+					sel2.hide();
+				});
+			});
+			
 			
 			/*
 			 * 点击新闻标题查看新闻的事件
@@ -159,29 +278,16 @@ for(var i=0;i<10;i++) {
 					var _t = setTimeout(function() {
 						clearTimeout(_t);
 						_t = null;
-						el.addClass('show anim');
+						el[0].className = 'show anim';
 					}, 0);
 				}, function(el) {
 					pagecontent.hide();
 				});
 			});
-			
-			
-			// 当有页面模块的滚动事件发生时，不阻止body的滚动行为
-			infocontent.on('touchmove', '.ct', function(e) {
-				e.stopPropagation();
-			});
-			infocontent2.on('touchmove', '.ct', function(e) {
-				e.stopPropagation();
-			});
-			
-			
-			
 			infocontent.on('tap', '.bk', function(e) {
 				self.anim(infocontent, function(el) {
-					// self.visb(pagecontent);
 					pagecontent.show();
-					el.removeClass('show');
+					el[0].className = 'anim';
 				}, function(el) {
 					el.hide();
 				});
@@ -191,20 +297,17 @@ for(var i=0;i<10;i++) {
 					var _t = setTimeout(function() {
 						clearTimeout(_t);
 						_t = null;
-						el.addClass('show anim');
+						el[0].className = 'show anim';
 					}, 0);
 				}, function(el) {
-					// self.hide(infocontent);
 					infocontent.hide();
 				});
 				
 			});
-			
 			infocontent2.on('tap', '.bk', function(e) {
 				self.anim(infocontent2, function(el) {
 					infocontent.show();
-					el.removeClass('show');
-					// self.visb(infocontent);
+					el[0].className = 'anim';
 				}, function(el) {
 					el.hide();
 				});
@@ -219,53 +322,83 @@ for(var i=0;i<10;i++) {
 					var _t = setTimeout(function() {
 						clearTimeout(_t);
 						_t = null;
-						el.addClass('show anim');
+						mainpage[0].className = 'hide2 anim';
+						el[0].className = 'show anim';
 					}, 0);
 				}, function(el) {
 					mainpage.hide();
 				});
 			});
-			
 			setcontent.on('tap', '.done', function(e) {
 				self.anim(setcontent, function(el) {
 					mainpage.show();
-					el.removeClass('show');
+					var _t = setTimeout(function() {
+						clearTimeout(_t);
+						_t = null;
+						mainpage[0].className = 'anim';
+						el[0].className = 'anim';
+					}, 0);
 				}, function(el) {
 					el.hide();
 				});
 			});
 			
 			// 设置页面元素对象
-			var setinfo = $('.set-info');
+			var setinfo = $('#set-info');
 			// 登录页面元素对象
-			var loginpage = $('.login-page');
+			var loginpage = $('#login-page');
 			// 注册页面元素对象
-			var registpage = $('.regist-page');
+			var registpage = $('#regist-page');
 			
 			setcontent.on('tap', '.lg', function(e) {
-				setinfo.removeClass('show').addClass('hide anim');
-				loginpage.removeClass('hide').addClass('show anim');
+				setinfo[0].className = 'hide anim';
+				loginpage[0].className = 'show anim';
 			});
 			loginpage.on('tap', '.bk', function(e) {
-				setinfo.removeClass('hide').addClass('show anim');
-				loginpage.removeClass('show').addClass('hide anim');
+				setinfo[0].className = 'show anim';
+				loginpage[0].className = 'hide anim';
 			}).on('tap', '.rg', function(e) {
-				loginpage.removeClass('show').addClass('hide2 anim');
-				registpage.removeClass('hide').addClass('show anim');
+				loginpage[0].className = 'hide2 anim';
+				registpage[0].className = 'show anim';
 			});
 			registpage.on('tap', '.bk', function(e) {
-				loginpage.removeClass('hide2').addClass('show anim');
-				registpage.removeClass('show').addClass('hide anim');
+				loginpage[0].className = 'show anim';
+				registpage[0].className = 'hide anim';
 			});
 			
 			
-			// this.launchAnim(launchbox[0]);
+			// 当有页面模块的滚动事件发生时，不阻止body的滚动行为
+			infocontent.on('touchmove', '.ct', function(e) {
+				e.stopPropagation();
+			});
+			infocontent2.on('touchmove', '.ct', function(e) {
+				e.stopPropagation();
+			});
+			pageappc.on('touchmove', '.ct', function(e) {
+				e.stopPropagation();
+			});
+			setcontent.on('touchmove', '.ct', function(e) {
+				e.stopPropagation();
+			});
+			optionpage.on('touchmove', '.ct-inner', function(e) {
+				e.stopPropagation();
+			});
+			
+			
+			this.launchAnim(launchbox[0], function() {
+				var t = setTimeout(function() {
+					clearTimeout(t);
+					t = null;
+					launchanimup();
+				}, 3000);
+			});
 		},
 		
 		// 初始化app icon的位置
 		initApp: function(el) {
 			var xst = 20, yst = 20, itemw = 100, col = 0,
-			_x = 0, _y = 0;
+			_x = 0, _y = 0,
+			_time = 200, dis = 250;
 			var self = this;
 			$(el).each(function(index, item) {
 				col = parseInt(index/2);
@@ -276,13 +409,7 @@ for(var i=0;i<10;i++) {
 					_x = (itemw*1 + xst*2);
 					_y = (itemw*col + yst*(col+1));
 				}
-				self.appos.push({
-					els: 'box-' + (index+1),
-					x: _x,
-					y: _y,
-					w: itemw,
-					inr: false
-				});
+				self.appos[index] = 'box-' + (index+1);
 				self.defpos.push({
 					x: _x,
 					y: _y,
@@ -292,6 +419,10 @@ for(var i=0;i<10;i++) {
 				$(item).css({
 					'-webkit-transform': 'translate3d('+ _x +'px, '+ _y +'px, 0) scale3d(1,1,1) rotateY(0deg)'
 				});
+				setTimeout(function() {
+					$(item).addClass('show');
+				}, _time);
+				_time += dis;
 			});
 		},
 		
@@ -299,39 +430,43 @@ for(var i=0;i<10;i++) {
 		
 		// 长按app
 		boxLongTap: function(el) {
-			var _x = 0, _y = 0;
+			var _x = 0, _y = 0, _e;
 			var _curt = 0;
 			var self = this;
 			$(this.appos).each(function(index, item) {
-				if($(el).hasClass(item.els)) {
-					_x = item.x;
-					_y = item.y;
+				_e = self.defpos[index];
+				if($(el).hasClass(item)) {
+					_x = _e.x;
+					_y = _e.y;
 					$(el).css({
-						'-webkit-transform': 'translate3d('+ item.x +'px, '+ item.y +'px, 0) scale3d(1.2,1.2,1.2) rotateY(0deg)',
+						'-webkit-transform': 'translate3d('+ _x +'px, '+ _y +'px, 0) scale3d(1.2,1.2,1.2) rotateY(0deg)',
 						'opacity': 1
 					}).addClass('anim3');
 					self._curt = index;
 				} else {
-					$('.' + item.els).css({
-						'-webkit-transform': 'translate3d('+ item.x +'px, '+ item.y +'px, 0) scale3d(1.1,1.1,1.1) rotateY(0deg)',
+					$('.' + item).css({
+						'-webkit-transform': 'translate3d('+ _e.x +'px, '+ _e.y +'px, 0) scale3d(1.1,1.1,1.1) rotateY(0deg)',
 						'opacity': 0.7
 					}).addClass('anim3');
 				}
 			});
 			var _x1 = 0, _y1 = 0,
-				_x2 = 0, _y2 = 0;
+				_x2 = 0, _y2 = 0,
+				_tx = 0, _ty = 0;
 			$(el).on('touchmove', function(e) {
+				_tx = e.touches[0].clientX;
+				_ty = e.touches[0].clientY;
 				if(_x1 == 0 && _y1 == 0) {
-					_x1 = e.touches[0].clientX;
-					_y1 = e.touches[0].clientY;
+					_x1 = _tx;
+					_y1 = _ty;
 					return;
 				}
-				_x2 = e.touches[0].clientX - _x1;
-				_y2 = e.touches[0].clientY - _y1;
+				_x2 = _tx - _x1;
+				_y2 = _ty - _y1;
 				$(this).css({
 					'-webkit-transform': 'translate3d('+ (_x + _x2) +'px, '+ (_y + _y2) +'px, 0) scale3d(1.2,1.2,1.2) rotateY(0deg)'
 				});
-				self.longTapMove($(this), _curt, e.touches[0].clientX, e.touches[0].clientY);
+				self.longTapMove($(this), _tx, _ty);
 			}).on('touchend', function(e) {
 				$(this).off();
 				$(this).css({
@@ -342,7 +477,7 @@ for(var i=0;i<10;i++) {
 		},
 		
 		// 长按拖动行为
-		longTapMove: function(el, curt, x, y) {
+		longTapMove: function(el, x, y) {
 			var self = this;
 			var _e, _x, _y, _w;
 			$(this.appos).each(function(index, item) {
@@ -369,21 +504,22 @@ for(var i=0;i<10;i++) {
 				var _e;
 				$(self.appos).each(function(index, item) {
 					_e = self.defpos[index];
-					item.x = _e.x;
-					item.y = _e.y;
-					$('.' + item.els).css({
-						'-webkit-transform': 'translate3d('+ item.x +'px, '+ item.y +'px, 0) scale3d(1.1,1.1,1.1) rotateY(0deg)'
+					// item.x = _e.x;
+					// item.y = _e.y;
+					$('.' + item).css({
+						'-webkit-transform': 'translate3d('+ _e.x +'px, '+ _e.y +'px, 0) scale3d(1.1,1.1,1.1) rotateY(0deg)'
 					});
 				});
-				
 			}
 		},
 		
 		// 取消长按事件
 		boxLongTapClear: function() {
+			var _e, self = this;
 			$(this.appos).each(function(index, item) {
-				$('.' + item.els).css({
-					'-webkit-transform': 'translate3d('+ item.x +'px, '+ item.y +'px, 0) scale3d(1,1,1) rotateY(0deg)',
+				_e = self.defpos[index];
+				$('.' + item).css({
+					'-webkit-transform': 'translate3d('+ _e.x +'px, '+ _e.y +'px, 0) scale3d(1,1,1) rotateY(0deg)',
 					'opacity': 1
 				});
 			});
@@ -434,7 +570,7 @@ for(var i=0;i<10;i++) {
 		},
 		
 		// 启动画面动画行为
-		launchAnim: function(el) {
+		launchAnim: function(el, callback) {
 			var height = $(document.body).height();
 			Morf.transition(el, {
 				'-webkit-transform': 'translate3d(0, '+ height +'px, 0) rotate(0deg)'
@@ -442,6 +578,9 @@ for(var i=0;i<10;i++) {
 				duration: '800ms',
 				timingFunction: 'bounce'
 			});
+			if(typeof callback == 'function') {
+				callback();
+			}
 		},
 		
 		// 主页面新闻feed翻滚事件

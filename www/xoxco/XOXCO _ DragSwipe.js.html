@@ -3,14 +3,20 @@
 	<title>XOXCO :: DragSwipe.js</title>
 	<meta name="viewport" content="width=device-width,maximum-scale=1.0,user-scalable=no">
 
-	<script src="XOXCO%20_%20DragSwipe.js_files/zepto_002.js"></script>
-	<script src="XOXCO%20_%20DragSwipe.js_files/hammer.js"></script>
 	<script src="XOXCO%20_%20DragSwipe.js_files/zepto.js"></script>
+	<script src="XOXCO%20_%20DragSwipe.js_files/hammer.js"></script>
+	<script src="XOXCO%20_%20DragSwipe.js_files/zepto.hammer.js"></script>
 	<script src="XOXCO%20_%20DragSwipe.js_files/dragswipe.js"></script>
 	<script>
 	
 	
 		Zepto(function() {
+			
+			$('#carousel').hammer().bind('swipe', function() {
+				
+			});
+			
+			return;
 			$('#carousel').dragswipe({width: 320,current_page_element: '#current_page',total_pages_element:'#total_pages'});
 			
 			$('.test1').swipe(function(ev) {

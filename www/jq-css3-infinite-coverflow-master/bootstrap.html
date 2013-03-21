@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+  <head>
+    <meta charset="utf-8">
+    <title>Infinite Coverflow with Bootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="./css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="./css/bootstrap-responsive.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="css/xna2.coverflow.css" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+  </head>
+
+  <body>
+
+
+  <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+          <div class="container">
+              <a class="btn btn-navbar visible-phone" data-toggle="collapse" data-target=".nav-collapse">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </a>
+              <a class="brand" href="#">WHY U NO RESIZE YOUR WINDOWS?</a>
+              <form class="navbar-search pull-right hidden-phone" action="">
+                  <input type="text" class="search-query span2" placeholder="Search">
+              </form>
+
+              <div class="nav-collapse visible-phone">
+                  <ul class="nav">
+
+
+
+                      <li class="dropdown" >
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Library<b class="caret"></b></a>
+                          <ul class="dropdown-menu">
+                              <li><a href="#">Book</a></li>
+                              <li><a href="#">Music</a></li>
+                              <li><a href="#">Tasks</a></li>
+                          </ul>
+                      </li>
+                      <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Collections<b class="caret"></b></a>
+                          <ul class="dropdown-menu">
+                              <li><a href="#">Rock Music</a></li>
+                              <li><a href="#">Mom's Recipes</a></li>
+                          </ul>
+                      </li>
+                      <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configuration<b class="caret"></b></a>
+                          <ul class="dropdown-menu">
+                              <li><a href="#">Settings</a></li>
+                          </ul>
+                      </li>
+                  </ul>
+                  <form class="navbar-search pull-right" action="">
+                      <input type="text" class="search-query span2" placeholder="Search">
+                  </form>
+
+              </div><!-- /.nav-collapse -->
+          </div>
+      </div><!-- /navbar-inner -->
+  </div><!-- /navbar -->
+
+  <div class="container-fluid ">
+      <div class="row-fluid">
+          <div class="span3 hidden-phone ">
+              <div class="well sidebar-nav">
+                  <ul class="nav nav-list">
+                      <li class="nav-header">Library</li>
+                      <li><a href="#"><i class="icon-book"></i>Book</a></li>
+                      <li><a href="#"><i class="icon-music"></i>Music</a></li>
+                      <li><a href="#"><i class="icon-tasks"></i>Tasks</a></li>
+
+                      <li class="nav-header"> Collections</li>
+                      <li><a href="#"><i class="icon-headphones"></i>Rock Music</a></li>
+                      <li><a href="#"><i class="icon-heart"></i>Mom's Recipes</a></li>
+                      <li class="nav-header">Configuration</li>
+                      <li><a href="#"><i class="icon-wrench"></i>Settings</a></li>
+
+                  </ul>
+              </div><!--/.well -->
+          </div><!--/span-->
+          <div class="span9">
+              <div class="row-fluid" id="coverflow-wrapper">
+                  <div id="coverflow-container"><div id="coverflow"></div></div>
+
+              </div>
+
+              <div class="row-fluid visible-phone" id="coverflow-control">
+
+                  <div class="btn-toolbar">
+                      <div class="btn-group">
+
+                          </div></div>
+              </div>
+          </div><!--/span-->
+      </div><!--/row-->
+
+
+
+  </div><!--/.fluid-container-->
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="./js/bootstrap.js"></script>
+
+    <script src="js/xna2.coverflow.js" type="text/javascript"></script>
+
+  </body>
+</html>

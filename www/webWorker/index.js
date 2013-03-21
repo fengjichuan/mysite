@@ -19,10 +19,10 @@
 		el.append('<div style="color: red">'+ e.data +'</div>');
 		// w.terminate();
 	};
-	setInterval(function() {
-		el.append('<div>'+ +new Date() +'</div>');
-		w.postMessage(Math.random());
-	}, 1000);
+	w.postMessage({
+		va1: 'fengjichuan',
+		va2: 'www.gmail.com'
+	});
 	// setTimeout(function() {
 	//  	el.append('<div style="color: red">'+ count(Math.random()) +'</div>');
 	// }, 3000);
